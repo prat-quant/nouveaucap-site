@@ -1,0 +1,270 @@
+{
+  "updated": "2026-09-28",
+  "publisher": {
+    "name": "Cyril Gayet",
+    "tradeName": "Pixapop",
+    "legalForm": "entrepreneur individuel (EI)",
+    "capital": "",
+    "address": "4775 RD 2085, 06330 Roquefort-les-Pins, France",
+    "siret": "820 684 330 00021",
+    "rcs": "",
+    "vat": "",
+    "director": "Cyril Gayet",
+    "email": "contact@pixapop.fr",
+    "website": "www.pixapop.fr"
+  },
+  "prices": {
+    "pilote": "19,90 €",
+    "premium": "39,90 €",
+    "cvBuilder": "29,90 €",
+    "trialDays": 3
+  },
+  "mediator": {
+    "name": "",
+    "url": ""
+  },
+  "contact": "par e-mail à contact@pixapop.fr",
+  "notice": [
+    {
+      "title": "Éditeur de l’application",
+      "lines": [
+        "Cyril Gayet, entrepreneur individuel (EI), nom commercial Pixapop.",
+        "Adresse : 4775 RD 2085, 06330 Roquefort-les-Pins, France.",
+        "SIRET : 820 684 330 00021.",
+        "Directeur de la publication : Cyril Gayet.",
+        "Contact : contact@pixapop.fr.",
+        "Site : www.pixapop.fr."
+      ]
+    },
+    {
+      "title": "Hébergement",
+      "lines": [
+        "Supabase Inc., site supabase.com. Les données sont hébergées dans l’Union européenne, à Paris (France), sur des serveurs Amazon Web Services."
+      ]
+    },
+    {
+      "title": "Intelligence artificielle",
+      "lines": [
+        "Les fonctions IA (le Copilote, les outils de Mon CV et de Créer son CV, le bilan de progression) utilisent le service Claude de la société Anthropic PBC (États-Unis). Leurs réponses sont générées automatiquement : elles peuvent contenir des erreurs et ne remplacent pas l’avis d’un professionnel."
+      ]
+    },
+    {
+      "title": "Nature du service",
+      "lines": [
+        "Nouveau Cap est un outil d’aide à la décision et d’organisation pour préparer une reconversion professionnelle. Il ne constitue ni un conseil financier, ni un conseil juridique, ni un bilan de compétences au sens du Code du travail. Les simulations financières reposent sur les chiffres que vous saisissez."
+      ]
+    },
+    {
+      "title": "Propriété intellectuelle",
+      "lines": [
+        "L’application, ses textes, ses illustrations (dont l’ours Copilote) et sa marque appartiennent à Cyril Gayet (Pixapop). Toute reproduction sans autorisation est interdite. Les contenus que vous saisissez (profil, CV, notes) restent les vôtres."
+      ]
+    }
+  ],
+  "privacy": [
+    {
+      "title": "Qui est responsable",
+      "lines": [
+        "Cyril Gayet (Pixapop), 4775 RD 2085, 06330 Roquefort-les-Pins, France, est responsable du traitement de vos données. Pour toute question ou demande : contact@pixapop.fr.",
+        "Nouveau Cap s’adresse aux adultes. L’application n’est pas destinée aux personnes de moins de 18 ans."
+      ]
+    },
+    {
+      "title": "Sur votre téléphone",
+      "lines": [
+        "Votre profil, vos pistes, votre plan, vos finances, vos sessions Focus, vos CV, votre dossier VAE, vos conversations avec le Copilote et vos bilans sont enregistrés sur votre téléphone. Ils n’en sortent pas, sauf dans les cas décrits ci-dessous."
+      ]
+    },
+    {
+      "title": "Sur notre serveur",
+      "lines": [
+        "Notre serveur est fourni par Supabase et hébergé à Paris, dans l’Union européenne. Il conserve :",
+        "Un identifiant de compte anonyme, créé pour votre téléphone, sans nom ni e-mail.",
+        "Un identifiant de l’appareil (sur Android, l’identifiant Android propre à l’application ; sur iPhone, un identifiant aléatoire gardé dans le trousseau), pour que les quotas ne se remettent pas à zéro en réinstallant l’app.",
+        "Votre offre (Gratuit, Pilote, Premium) et vos achats à l’unité.",
+        "Des compteurs d’utilisation : annonces analysées (une empreinte de chaque annonce, sans son texte), messages au Copilote et utilisations des fonctions IA.",
+        "La mémoire du Copilote, si vous l’avez activé : un résumé de vos échanges et vos derniers messages.",
+        "Vos suggestions et vos votes dans « Vos idées », et l’e-mail que vous choisissez d’y laisser pour être recontacté.",
+        "Si vous acceptez les notifications : l’adresse de notification de votre téléphone et la date de votre dernière ouverture de l’app.",
+        "Les CV et profils LinkedIn importés en PDF sont lus par le serveur pour en extraire le texte, puis effacés aussitôt.",
+        "Les réponses de l’IA que vous signalez (bouton « Signaler »), avec le motif et la précision que vous ajoutez, pour les examiner et améliorer le service."
+      ]
+    },
+    {
+      "title": "La protection contre les robots",
+      "lines": [
+        "Quand l’app crée le compte anonyme de votre téléphone, une vérification automatique s’assure qu’il s’agit bien d’une personne et non d’un programme : elle protège le service et son budget contre les faux comptes. Le plus souvent, elle est invisible ; parfois, elle vous demande de cocher une case.",
+        "Cette vérification est Turnstile, de Cloudflare (États-Unis). Elle examine des informations techniques sur votre appareil et votre connexion (adresse IP, caractéristiques de l’affichage intégré à l’app), sans cookie publicitaire, et ne nous transmet qu’un jeton de validation, qui n’est pas conservé. Ce transfert hors de l’Union européenne est encadré par les clauses contractuelles types de la Commission européenne."
+      ]
+    },
+    {
+      "title": "Les paiements",
+      "lines": [
+        "Les abonnements et les achats se font par Google Play. Vos coordonnées bancaires restent chez Google : nous ne les recevons jamais.",
+        "Pour savoir ce que vous avez acheté, nous utilisons RevenueCat (États-Unis), qui reçoit de Google la preuve de vos achats et l’identifiant anonyme de votre compte, sans votre nom. Ce transfert hors de l’Union européenne est encadré par les clauses contractuelles types de la Commission européenne.",
+        "L’historique de vos achats est conservé tant que votre abonnement est actif, puis pendant la durée exigée par les obligations comptables (10 ans)."
+      ]
+    },
+    {
+      "title": "Le Copilote IA et les fonctions IA",
+      "lines": [
+        "Rien n’est envoyé à l’IA sans votre accord explicite, demandé à l’activation et que vous pouvez retirer à tout moment ci-dessus.",
+        "Pour vous répondre, le Copilote reçoit votre message et un résumé de votre situation : profil, pistes, avancement du plan, finances, ton choisi. Le texte de votre CV ne lui est pas envoyé.",
+        "Quand vous le demandez dans Mon CV, Créer son CV ou pour votre bilan, le contenu nécessaire (votre CV, l’annonce, votre profil LinkedIn importé, votre plan) est envoyé à l’IA pour préparer la réponse. Il n’est pas conservé sur notre serveur.",
+        "L’IA est le service Claude d’Anthropic (États-Unis). Anthropic n’utilise pas ces données pour entraîner ses modèles et ne les conserve que pour une durée limitée, pour la sécurité du service. Ce transfert hors de l’Union européenne est encadré par les clauses contractuelles types de la Commission européenne."
+      ]
+    },
+    {
+      "title": "Les notifications",
+      "lines": [
+        "Les rappels que vous activez (le mot du Copilote le matin, la fin d’une session Focus) sont programmés sur votre téléphone.",
+        "Si vous acceptez les notifications, notre serveur peut vous prévenir que votre bilan est prêt, ou vous relancer avec bienveillance après une longue absence. Ces messages passent par le service de notifications d’Expo (États-Unis), puis par Google ou Apple. Vous pouvez les couper dans Réglages ou dans les réglages de votre téléphone."
+      ]
+    },
+    {
+      "title": "Les liens d’annonce",
+      "lines": [
+        "Quand vous collez le lien d’une annonce, c’est votre téléphone qui ouvre la page, comme un navigateur. Rien n’est envoyé à notre serveur."
+      ]
+    },
+    {
+      "title": "Pourquoi, et sur quelle base",
+      "lines": [
+        "Faire fonctionner les services que vous utilisez, appliquer votre offre et gérer vos achats : exécution du contrat.",
+        "Le Copilote IA et les fonctions IA : votre consentement.",
+        "Les notifications envoyées par le serveur : votre consentement, donné en les autorisant.",
+        "Empêcher les abus des quotas et assurer la sécurité : notre intérêt légitime.",
+        "Nous ne vendons pas vos données, nous n’affichons pas de publicité et nous n’utilisons aucun outil de mesure d’audience."
+      ]
+    },
+    {
+      "title": "Combien de temps",
+      "lines": [
+        "Les données du téléphone : jusqu’à ce que vous les effaciez ou supprimiez l’app.",
+        "La mémoire du Copilote : jusqu’à ce que vous l’effaciez, retiriez votre accord ou effaciez vos données.",
+        "Les compteurs d’utilisation : 12 mois, puis supprimés automatiquement. Après un effacement de vos données, ils ne sont plus liés à votre compte.",
+        "L’adresse de notification : jusqu’à ce que vous coupiez les notifications ou effaciez vos données, et au plus 12 mois sans ouverture de l’app.",
+        "Les suggestions et les votes : jusqu’à leur effacement par vous, ou 3 ans sans activité.",
+        "Les signalements de réponses de l’IA : 12 mois. Après un effacement de vos données, ils ne sont plus liés à votre compte."
+      ]
+    },
+    {
+      "title": "Qui y a accès",
+      "lines": [
+        "Seuls Cyril Gayet et ses prestataires techniques y ont accès, chacun pour ce qui le concerne : Supabase (serveur), Anthropic (IA), Expo (notifications), RevenueCat (suivi des achats), Cloudflare (protection contre les robots), et Google ou Apple (distribution de l’app et paiements)."
+      ]
+    },
+    {
+      "title": "Vos droits",
+      "lines": [
+        "Vous pouvez accéder à vos données, les corriger, les effacer, les récupérer, vous opposer à leur utilisation ou en limiter l’usage, et retirer votre consentement à tout moment.",
+        "L’effacement se fait directement dans l’app : Réglages, « Confidentialité et données », « Effacer mes données ». Supprimer l’app efface aussi les données qu’elle a enregistrées sur le téléphone, sauf, sur iPhone, l’identifiant de l’appareil gardé dans le trousseau pour les quotas.",
+        "Pour toute autre demande, écrivez-nous par e-mail à contact@pixapop.fr. Nous répondons sous un mois.",
+        "Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr)."
+      ]
+    },
+    {
+      "title": "Mises à jour",
+      "lines": [
+        "Cette politique a été mise à jour le 28 septembre 2026. En cas de changement important, l’app vous en informera."
+      ]
+    }
+  ],
+  "terms": [
+    {
+      "title": "Objet",
+      "lines": [
+        "Ces conditions régissent l’utilisation de l’application Nouveau Cap et l’achat de ses offres. Elles sont conclues entre vous et Cyril Gayet, entrepreneur individuel (EI), exerçant sous le nom commercial Pixapop, 4775 RD 2085, 06330 Roquefort-les-Pins, France, SIRET 820 684 330 00021 (voir les mentions légales). Utiliser l’application ou acheter une offre vaut acceptation de ces conditions.",
+        "L’application s’adresse aux personnes majeures, pour un usage personnel."
+      ]
+    },
+    {
+      "title": "Le service",
+      "lines": [
+        "Nouveau Cap aide à préparer une reconversion professionnelle : bilan de situation, pistes de métier, plan d’action, finances, CV, profil LinkedIn, VAE et Copilote IA.",
+        "C’est un outil d’aide à la décision et d’organisation. Il ne remplace ni un conseil juridique, financier ou fiscal, ni un accompagnement professionnel, et ne garantit pas l’obtention d’un emploi ou d’une formation. Les réponses de l’IA peuvent contenir des erreurs : vérifiez les informations importantes."
+      ]
+    },
+    {
+      "title": "Les offres et leurs prix",
+      "lines": [
+        "Gratuit : les fonctions de base, sans paiement.",
+        "Pilote : abonnement mensuel, 19,90 € par mois.",
+        "Premium : abonnement mensuel, 39,90 € par mois. Un premier abonnement Premium commence par 3 jours d’essai gratuit.",
+        "Créer son CV : achat unique, 29,90 €, sans abonnement. Il est inclus dans Premium.",
+        "Le contenu de chaque offre est décrit dans l’application (Réglages, « Mon abonnement »). Les prix sont indiqués toutes taxes comprises, en euros. Le prix qui s’applique est celui affiché par Google Play au moment de l’achat."
+      ]
+    },
+    {
+      "title": "Paiement",
+      "lines": [
+        "Le paiement se fait uniquement par Google Play, avec le moyen de paiement enregistré dans votre compte Google, selon les conditions de Google. Nous ne recevons jamais vos coordonnées bancaires.",
+        "L’offre achetée est activée dès la confirmation du paiement par Google."
+      ]
+    },
+    {
+      "title": "Durée, renouvellement et résiliation",
+      "lines": [
+        "Les abonnements Pilote et Premium sont sans engagement. Ils se renouvellent automatiquement chaque mois, au prix en vigueur, jusqu’à leur résiliation.",
+        "Vous pouvez résilier à tout moment dans Google Play (Profil, Paiements et abonnements, Abonnements), ou depuis l’application : Réglages, « Mon abonnement », « Gérer mon abonnement ». La résiliation prend effet à la fin de la période déjà payée : vous gardez l’accès jusque-là. Le mois commencé n’est pas remboursé au prorata.",
+        "Passer de Pilote à Premium prend effet immédiatement : Google déduit la part non utilisée de votre abonnement Pilote. Passer de Premium à Pilote prend effet au renouvellement suivant.",
+        "Si un paiement de renouvellement échoue, Google vous laisse quelques jours pour régulariser. Sans régularisation, l’abonnement prend fin et l’application revient à l’offre Gratuit.",
+        "Nous pouvons faire évoluer les prix. Un changement de prix d’un abonnement en cours vous est annoncé par Google à l’avance, et vous pouvez résilier avant qu’il s’applique."
+      ]
+    },
+    {
+      "title": "Essai gratuit",
+      "lines": [
+        "L’essai gratuit de Premium dure 3 jours et n’est proposé qu’une fois par compte Google. À la fin de l’essai, l’abonnement Premium démarre automatiquement au prix indiqué, sauf si vous l’avez résilié avant."
+      ]
+    },
+    {
+      "title": "Droit de rétractation",
+      "lines": [
+        "Les fonctions payantes sont des contenus et services numériques fournis dès l’achat. En demandant leur accès immédiat, vous acceptez que leur fourniture commence avant la fin du délai légal de rétractation de 14 jours et vous reconnaissez perdre ce droit dès qu’elle a commencé (article L221-28 du Code de la consommation).",
+        "Google Play permet par ailleurs de demander un remboursement peu après un achat, selon ses propres règles. Pour tout problème avec un achat, écrivez-nous : nous étudions chaque demande."
+      ]
+    },
+    {
+      "title": "Restauration des achats",
+      "lines": [
+        "Vos achats sont liés à votre compte Google. Après une réinstallation ou un changement de téléphone, utilisez « Restaurer mes achats » dans Réglages, « Mon abonnement ». « Effacer mes données » ne supprime pas vos achats."
+      ]
+    },
+    {
+      "title": "Utilisation du service",
+      "lines": [
+        "Vous vous engagez à utiliser l’application de façon personnelle et loyale : pas de revente, pas de contournement des limites des offres, pas de contenu illicite transmis au Copilote.",
+        "Nous faisons notre possible pour que l’application fonctionne en continu, sans pouvoir le garantir : maintenance, panne d’un prestataire ou de la connexion peuvent l’interrompre. Les fonctions qui dépendent du serveur ou de l’IA peuvent être momentanément indisponibles.",
+        "Nous pouvons faire évoluer l’application. Si une évolution supprime une fonction importante d’une offre payante en cours, vous en êtes informé et pouvez résilier."
+      ]
+    },
+    {
+      "title": "Responsabilité",
+      "lines": [
+        "Les décisions que vous prenez restent les vôtres. Notre responsabilité ne peut être engagée pour une décision fondée sur une simulation, une suggestion ou une réponse de l’IA. Rien dans ces conditions ne limite les droits que la loi vous garantit en tant que consommateur."
+      ]
+    },
+    {
+      "title": "Vos données",
+      "lines": [
+        "Leur traitement est décrit dans la politique de confidentialité, accessible depuis Réglages et sur la page www.pixapop.fr/nouveau-cap/confidentialite/."
+      ]
+    },
+    {
+      "title": "Réclamations et médiation",
+      "lines": [
+        "Pour toute réclamation, écrivez-nous par e-mail à contact@pixapop.fr. Nous répondons sous un mois.",
+        "Nous n’avons pas encore désigné de médiateur de la consommation. En cas de litige non résolu avec nous, vous pouvez le signaler sur signal.conso.gouv.fr ou saisir le tribunal compétent."
+      ]
+    },
+    {
+      "title": "Droit applicable et modifications",
+      "lines": [
+        "Ces conditions sont soumises au droit français. En cas de litige, les tribunaux compétents sont ceux prévus par la loi, notamment ceux de votre domicile si vous êtes consommateur.",
+        "Nous pouvons modifier ces conditions. La version applicable est celle en vigueur à la date de votre achat ou de votre renouvellement ; un changement important vous est signalé dans l’application.",
+        "Conditions mises à jour le 28 septembre 2026."
+      ]
+    }
+  ]
+}
