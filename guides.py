@@ -49,6 +49,8 @@ PAGE = """<!doctype html>
 
 def build():
     OUT.mkdir(parents=True, exist_ok=True)
+    for old in OUT.glob("*.html"):
+        old.unlink()
     guides = read_guides()
     for g in guides:
         body = g["body"].replace("{{updated}}", french_date(g["updated"]))

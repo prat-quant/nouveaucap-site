@@ -9,6 +9,7 @@ import html
 import json
 import shutil
 import blog
+import guides
 from datetime import date
 from pathlib import Path
 
@@ -284,6 +285,7 @@ def home():
 
 
 ARTICLES = blog.read_articles()
+GUIDES = guides.read_guides()
 
 
 def article_card(a):
@@ -423,13 +425,30 @@ def not_found():
     page("/404", "Page introuvable · Nouveau Cap", "Cette page n’existe pas.", body, noindex=True)
 
 
+def publish_guides():
+    """Copies the PDF guides to /telechargement/ (not indexed) with a catalogue read by the Supabase function
+    `guide`, which e-mails them. Only guides whose PDF exists are published."""
+    out = OUT / "telechargement"
+    out.mkdir()
+    catalogue = []
+    by_slug = {a["slug"]: a for a in ARTICLES}
+    for g in GUIDES:
+        pdf = ROOT / "guides" / "pdf" / f"{g['slug']}.pdf"
+        art = by_slug.get(g["article"])
+        if not pdf.exists() or not art:
+            continue
+        shutil.copy(pdf, out / pdf.name)
+        catalogue.append({"slug": g["slug"], "title": g["title"], "pdf": f"/telechargement/{pdf.name}",
+                          "article": f"/blog/{art['slug']}/", "article_title": art["title"]})
+    (out / "index.json").write_text(json.dumps(catalogue, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def main():
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir()
     shutil.copytree(ROOT / "assets", OUT / "assets")
-    if (ROOT / "guides" / "pdf").exists():
-        shutil.copytree(ROOT / "guides" / "pdf", OUT / "guides")
+    publish_guides()
     (OUT / "CNAME").write_text("nouveaucap.pixapop.fr\n", encoding="utf-8")
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
     paths = [home(), *legal_pages(), *blog_pages()]
@@ -441,7 +460,7 @@ def main():
         + "".join(f"  <url><loc>{SITE}{p}</loc><lastmod>{today}</lastmod></url>\n" for p in paths)
         + "</urlset>\n", encoding="utf-8")
     # Search engines and AI search assistants are welcome: being found is the point of this site.
-    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /desinscription/\nDisallow: /guides/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /desinscription/\nDisallow: /telechargement/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print(f"{len(paths) + 2} pages written to docs/")
 
 

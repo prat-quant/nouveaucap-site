@@ -57,6 +57,6 @@ nouvelles, règle CNIL). Source : `content/guides/<article>.html` (en-tête, tro
 python3 guides.py && node scripts/guides-pdf.js && python3 build.py
 ```
 
-Le PDF sort dans `guides/pdf/<slug>.pdf`, que `build.py` publie dans `docs/guides/` (non indexé : `Disallow: /guides/` dans robots.txt). Il faut
+Le PDF sort dans `guides/pdf/<slug>.pdf`, que `build.py` publie dans `docs/telechargement/` avec le catalogue `index.json` lu par la fonction Supabase `guide` (non indexé : `Disallow: /telechargement/` dans robots.txt). Il faut
 Node et Playwright avec Chromium (présents dans les sessions cloud de Claude Code). Toujours vérifier le
 nombre de pages et regarder chaque page rendue avant de publier.

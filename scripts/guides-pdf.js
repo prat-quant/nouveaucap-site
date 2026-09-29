@@ -1,7 +1,7 @@
 // Prints the guides built by guides.py (build/guides/*.html) to guides/pdf/<slug>.pdf, A4, with a small
 // footer (guide name and page number). Needs Node and Playwright with Chromium (present in Claude Code
 // cloud sessions). Usage, from the repository root: python3 guides.py && node scripts/guides-pdf.js [slug] && python3 build.py
-// (build.py copies guides/pdf/ to docs/guides/, since it rebuilds docs/ from scratch)
+// (build.py copies guides/pdf/ to docs/telechargement/, since it rebuilds docs/ from scratch)
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
