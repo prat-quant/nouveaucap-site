@@ -8,6 +8,7 @@ pixapop-site/data/). Standard library only. Never edit docs/ by hand: it is rewr
 import html
 import json
 import shutil
+import blog
 from datetime import date
 from pathlib import Path
 
@@ -63,6 +64,7 @@ def page(path, title, description, body, *, jsonld=None, noindex=False):
 <link rel="preload" href="/assets/fonts/sora-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/manrope-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/styles.css">
+<link rel="alternate" type="application/rss+xml" title="Blog Nouveau Cap" href="/blog/feed.xml">
 {lds}
 </head>
 <body data-visit="{VISIT_URL}">
@@ -73,7 +75,7 @@ def page(path, title, description, body, *, jsonld=None, noindex=False):
   <nav class="nav" aria-label="Menu principal">
     <a href="/#fonctions" class="hide-sm">L’app</a>
     <a href="/#offres" class="hide-sm">Offres</a>
-    <a href="/#questions" class="hide-sm">Questions</a>
+    <a href="/blog/" class="hide-sm">Blog</a>
     <a href="/#liste" class="cta">Être prévenu</a>
   </nav>
 </div></header>
@@ -85,6 +87,7 @@ def page(path, title, description, body, *, jsonld=None, noindex=False):
   <div class="row">
     <p>© {YEAR} <a href="{AGENCY}/">Pixapop</a></p>
     <nav aria-label="Liens légaux">
+      <a href="/blog/">Blog</a>
       <a href="/confidentialite/">Confidentialité du site</a>
       <a href="/mentions-legales/">Mentions légales</a>
       <a href="{APP_PRIVACY}">Confidentialité de l’app</a>
@@ -243,6 +246,8 @@ def home():
 
 {waitlist_block()}
 
+{blog_teaser()}
+
 <section id="questions" class="band" aria-labelledby="q"><div class="wrap narrow">
   <div class="head"><p class="eyebrow">Questions fréquentes</p><h2 id="q">Ce qu’on nous demande.</h2></div>
   <div class="faq">{faq_html}</div>
@@ -266,6 +271,84 @@ def home():
     return page("/", "Nouveau Cap : l’app de reconversion professionnelle après 40 ans",
                 "Nouveau Cap aide les cadres de 40 ans et plus à changer de métier : combien de mois vous pouvez tenir, plan de 90 jours, tests de pistes, CV et LinkedIn, Copilote IA. Bientôt sur Android.",
                 body, jsonld=[org, app, fq])
+
+
+ARTICLES = blog.read_articles()
+
+
+def article_card(a):
+    return (f'<article class="card glass post"><h3><a href="/blog/{a["slug"]}/">{esc(a["title"])}</a></h3>'
+            f'<p>{esc(a["description"])}</p><p class="meta">Mis à jour le {blog.french_date(a["updated"])} · {max(1, round(a["words"] / 220))} min de lecture</p></article>')
+
+
+def blog_teaser():
+    if not ARTICLES:
+        return ""
+    cards = "".join(article_card(a) for a in ARTICLES[:4])
+    return f"""<section class="band" aria-labelledby="b"><div class="wrap">
+  <div class="head"><p class="eyebrow">Le blog</p><h2 id="b">Les guides pour préparer votre reconversion.</h2>
+  <p class="lead">Financement, CV, VAE, droits au chômage : des réponses précises, vérifiées sur les sources officielles.</p></div>
+  <div class="posts">{cards}</div>
+  <p style="margin-top:20px"><a class="btn btn-ghost" href="/blog/">Tous les articles {ARROW}</a></p>
+</div></section>"""
+
+
+def blog_pages():
+    paths = []
+    for n, a in enumerate(ARTICLES):
+        body, toc, faq_items = blog.markdown(a["body"], blog.WIDGETS)
+        others = [x for x in ARTICLES if x is not a]
+        related = (others[n:] + others[:n])[:3]
+        toc_html = "".join(f'<li><a href="#{k}">{esc(t)}</a></li>' for k, t in toc if not t.lower().startswith("sources"))
+        url = f"{SITE}/blog/{a['slug']}/"
+        minutes = max(1, round(a["words"] / 220))
+        html_body = f"""<div class="wrap narrow article">
+  <nav class="crumbs" aria-label="Fil d’Ariane"><a href="/">Nouveau Cap</a> › <a href="/blog/">Blog</a></nav>
+  <header class="art-head">
+    <h1>{esc(a["title"])}</h1>
+    <p class="lead">{esc(a["description"])}</p>
+    <p class="meta">Mis à jour le <time datetime="{a["updated"]}">{blog.french_date(a["updated"])}</time> · {minutes} min de lecture · Par l’équipe Nouveau Cap (Pixapop)</p>
+  </header>
+  <details class="toc glass"><summary>Sommaire</summary><ol>{toc_html}</ol></details>
+  <div class="prose">
+{body}
+  </div>
+  <aside class="cta glass" aria-label="Liste d’attente">
+    <p class="eyebrow">Nouveau Cap</p>
+    <h2>Préparez votre reconversion avec un plan.</h2>
+    <p>Runway, pistes testées sur le terrain, plan de 90 jours, CV : l’app sort bientôt sur Android. Laissez votre adresse pour être prévenu le jour du lancement.</p>
+    <p><a class="btn btn-primary" href="/#liste">Être prévenu du lancement {ARROW}</a></p>
+  </aside>
+  <p class="note">Article d’information générale, rédigé avec l’aide d’outils d’IA et vérifié sur les sources officielles citées. Il ne remplace pas un conseil personnalisé : pour votre situation, adressez-vous à France Travail, à Transitions Pro ou à l’Apec.</p>
+  <section class="related" aria-labelledby="r"><h2 id="r">À lire aussi</h2><div class="posts">{"".join(article_card(x) for x in related)}</div></section>
+</div>"""
+        ld = [{"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["title"], "description": a["description"],
+               "datePublished": a.get("published", a["updated"]), "dateModified": a["updated"], "inLanguage": "fr",
+               "mainEntityOfPage": url, "url": url, "image": SITE + "/assets/img/og-light.jpg",
+               "author": {"@type": "Organization", "name": "Nouveau Cap (Pixapop)", "url": SITE + "/"},
+               "publisher": {"@id": AGENCY + "/#organization"}, "keywords": a.get("keyword", "")},
+              {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+                  {"@type": "ListItem", "position": 1, "name": "Nouveau Cap", "item": SITE + "/"},
+                  {"@type": "ListItem", "position": 2, "name": "Blog", "item": SITE + "/blog/"},
+                  {"@type": "ListItem", "position": 3, "name": a["title"], "item": url}]}]
+        if faq_items:
+            ld.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+                {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in faq_items]})
+        paths.append(page(f"/blog/{a['slug']}/", f"{a['title']} · Nouveau Cap", a["description"], html_body, jsonld=ld))
+    cards = "".join(article_card(a) for a in ARTICLES)
+    index = f"""<div class="wrap">
+  <div class="head" style="padding-top:clamp(30px,6vw,60px)"><nav class="crumbs" aria-label="Fil d’Ariane"><a href="/">Nouveau Cap</a></nav>
+  <p class="eyebrow">Le blog</p><h1>Réussir sa reconversion après 40 ans : les guides</h1>
+  <p class="lead">Financer une formation, écrire un CV de reconversion, préparer une VAE, connaître ses droits au chômage, savoir combien de mois tenir : des réponses précises et sourcées.</p></div>
+  <div class="posts">{cards}</div>
+</div>"""
+    paths.append(page("/blog/", "Blog Nouveau Cap : guides de reconversion après 40 ans",
+                      "Guides pratiques et sourcés pour réussir sa reconversion professionnelle après 40 ans : financement, CV, VAE, chômage, bilan de compétences.", index))
+    items = "".join(f"<item><title>{esc(a['title'])}</title><link>{SITE}/blog/{a['slug']}/</link><guid>{SITE}/blog/{a['slug']}/</guid>"
+                    f"<description>{esc(a['description'])}</description><pubDate>{date.fromisoformat(a['updated']).strftime('%a, %d %b %Y')} 08:00:00 +0200</pubDate></item>" for a in ARTICLES)
+    (OUT / "blog").mkdir(parents=True, exist_ok=True)
+    (OUT / "blog" / "feed.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Blog Nouveau Cap</title><link>{SITE}/blog/</link><description>Guides de reconversion après 40 ans</description><language>fr</language>{items}</channel></rss>\n', encoding="utf-8")
+    return paths
 
 
 def text_page(path, title, description, sections, *, noindex=False):
@@ -337,7 +420,7 @@ def main():
     shutil.copytree(ROOT / "assets", OUT / "assets")
     (OUT / "CNAME").write_text("nouveaucap.pixapop.fr\n", encoding="utf-8")
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
-    paths = [home(), *legal_pages()]
+    paths = [home(), *legal_pages(), *blog_pages()]
     unsubscribe()
     not_found()
     today = date.today().isoformat()

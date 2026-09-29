@@ -10,6 +10,13 @@ une étape à la fois, sans tiret cadratin.
    dépendances).
 3. Après la modification : ajouter une entrée en haut de ce journal et l'envoyer sur `main` d'AIOS.
 
+## Blog
+
+- Chaque article sert un mot-clé mesuré (volumes dans AIOS `projects/nouveau-cap-marketing/donnees/`) et suit
+  les règles de `SEO-CONTENU.md` : réponse directe en tête, sources officielles datées, aucun chiffre
+  inventé, exemples présentés comme fictifs, pas de conseil personnalisé, mention de l'aide de l'IA.
+- Relire et mettre à jour chaque article au moins tous les 3 mois (champ `updated`).
+
 ## Règles
 
 - Voir `README.md` pour construire et tester. Ne jamais modifier `docs/` à la main.

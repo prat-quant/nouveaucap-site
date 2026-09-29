@@ -68,3 +68,51 @@
     });
   }
 })();
+
+// Runway calculator (blog): how many months the household can hold, month by month, with the ARE
+// allowance until the end of the rights, then without. Runs on the device only; nothing is sent.
+function nouveauCapRunway(v) {
+  var n = function (x) { x = Number(x); return isFinite(x) && x > 0 ? x : 0; };
+  var savings = Math.max(0, n(v.savings) - n(v.reserve)), expenses = n(v.expenses), are = n(v.are);
+  var months = Math.floor(n(v.months)), income = n(v.income);
+  var during = income + are - expenses, after = income - expenses;
+  if (expenses === 0) return { status: 'empty' };
+  if (after >= 0) return { status: 'covered', during: during, after: after };
+  var balance = savings;
+  for (var m = 1; m <= 600; m++) {
+    balance += income + (m <= months ? are : 0) - expenses;
+    if (balance < 0) return { status: 'ok', runway: m - 1, during: during, after: after, arePart: Math.min(m - 1, months) };
+  }
+  return { status: 'long', runway: 600, during: during, after: after };
+}
+if (typeof module !== 'undefined') module.exports = nouveauCapRunway;
+
+(function () {
+  if (typeof document === 'undefined') return;
+  var MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  var euro = function (x) { return Math.round(Math.abs(x)).toLocaleString('fr-FR') + ' €'; };
+  document.querySelectorAll('[data-calc]').forEach(function (box) {
+    var out = function (k) { return box.querySelector('[data-out="' + k + '"]'); };
+    function update() {
+      var v = {};
+      box.querySelectorAll('input').forEach(function (i) { v[i.name] = i.value; });
+      var r = nouveauCapRunway(v);
+      if (r.status === 'empty') { out('runway').textContent = 'Renseignez vos dépenses'; out('detail').textContent = ''; return; }
+      if (r.status === 'covered') {
+        out('runway').textContent = 'Vos revenus couvrent vos dépenses';
+        out('detail').textContent = 'Même sans allocation, vos autres revenus couvrent vos dépenses mensuelles : votre épargne n’est pas entamée.';
+        return;
+      }
+      var m = r.runway, d = new Date(); d.setMonth(d.getMonth() + m);
+      out('runway').textContent = m >= 600 ? 'Plus de 50 ans' : (m + ' mois');
+      var parts = [];
+      if (r.during >= 0) parts.push('Pendant vos droits ARE, vos revenus couvrent vos dépenses.');
+      else parts.push('Pendant vos droits ARE : il vous manque ' + euro(r.during) + ' par mois.');
+      parts.push('Ensuite : il vous manque ' + euro(r.after) + ' par mois.');
+      if (m < 600) parts.push('Épargne mobilisable épuisée vers ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() + ' (hors montant gardé de côté).');
+      out('detail').textContent = parts.join(' ');
+    }
+    box.addEventListener('input', update);
+    update();
+  });
+})();

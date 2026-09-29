@@ -15,6 +15,18 @@ Hébergé gratuitement par GitHub Pages, à partir du dossier `docs/` de la bran
 
 Ne jamais modifier `docs/` à la main.
 
+## Blog
+
+- Articles : un fichier Markdown par article dans `content/blog/<slug>.md` (en-tête `title`, `description`,
+  `slug`, `keyword`, `updated`, `order`, puis `---`). Sous-ensemble Markdown : `##`, `###`, paragraphes,
+  listes `-` et `1.`, `**gras**`, `[liens](url)`, tableaux `|`. `[[CALCULATEUR]]` insère le calculateur de runway.
+- `blog.py` convertit et produit : page de chaque article (sommaire, encadré liste d'attente, « À lire
+  aussi », données structurées BlogPosting, fil d'Ariane et FAQ), `/blog/` et le flux `/blog/feed.xml`.
+- Calcul du runway : fonction `nouveauCapRunway` dans `assets/site.js` (testée, cas limites et 20 000 cas
+  aléatoires) ; rien n'est envoyé.
+- Calendrier et stratégie : dépôt AIOS, `projects/nouveau-cap-marketing/` (`CALENDRIER-CONTENUS.md`,
+  `SEO-CONTENU.md`).
+
 ## Ce que fait le site
 
 - Page d'accueil : promesse, fonctions, captures (claires ou sombres selon le téléphone), lien avec l'Apec,
