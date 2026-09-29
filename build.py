@@ -439,7 +439,7 @@ def main():
         + "".join(f"  <url><loc>{SITE}{p}</loc><lastmod>{today}</lastmod></url>\n" for p in paths)
         + "</urlset>\n", encoding="utf-8")
     # Search engines and AI search assistants are welcome: being found is the point of this site.
-    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /desinscription/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /desinscription/\nDisallow: /guides/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     print(f"{len(paths) + 2} pages written to docs/")
 
 

@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /desinscription/
+Disallow: /guides/
 
 Sitemap: https://nouveaucap.pixapop.fr/sitemap.xml

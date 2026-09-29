@@ -45,3 +45,18 @@ Ne jamais modifier `docs/` à la main.
   selon le réglage du téléphone.
 - Aucun cookie, aucune ressource tierce chargée à l'affichage.
 - Images : visuels de la fiche Google Play (`nouveau-cap/store/google-play/`), réduits en WebP 540 x 960.
+
+## Guides PDF (aimants à contacts)
+
+Un guide de 4 ou 5 pages accompagne chaque article du blog : check-list, tableau à remplir, modèle,
+étapes. Il est envoyé par e-mail à qui le demande (collecte : case séparée et non cochée pour les
+nouvelles, règle CNIL). Source : `content/guides/<article>.html` (en-tête, trois tirets, puis des blocs
+`<section class="page">`, classes dans `guides/guide.css`). Fabrication, depuis la racine du dépôt :
+
+```
+python3 guides.py && node scripts/guides-pdf.js
+```
+
+Le PDF sort dans `docs/guides/<slug>.pdf` (non indexé : `Disallow: /guides/` dans robots.txt). Il faut
+Node et Playwright avec Chromium (présents dans les sessions cloud de Claude Code). Toujours vérifier le
+nombre de pages et regarder chaque page rendue avant de publier.
