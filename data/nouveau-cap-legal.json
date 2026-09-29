@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "publisher": {
     "name": "Cyril Gayet",
     "tradeName": "Pixapop",
@@ -45,7 +45,7 @@
     {
       "title": "Intelligence artificielle",
       "lines": [
-        "Les fonctions IA (le Copilote, les outils de Mon CV et de Créer son CV, le bilan de progression) utilisent le service Claude de la société Anthropic PBC (États-Unis). Leurs réponses sont générées automatiquement : elles peuvent contenir des erreurs et ne remplacent pas l’avis d’un professionnel."
+        "Les fonctions IA (le Copilote, les idées de pistes, les outils de Mon CV et de Créer son CV, la rédaction de la présentation d’un projet de financement, le bilan de progression) utilisent le service Claude de la société Anthropic PBC (États-Unis). Leurs réponses sont générées automatiquement : elles peuvent contenir des erreurs et ne remplacent pas l’avis d’un professionnel."
       ]
     },
     {
@@ -110,7 +110,7 @@
       "lines": [
         "Rien n’est envoyé à l’IA sans votre accord explicite, demandé à l’activation et que vous pouvez retirer à tout moment ci-dessus.",
         "Pour vous répondre, le Copilote reçoit votre message et un résumé de votre situation : profil, pistes, avancement du plan, finances, ton choisi. Le texte de votre CV ne lui est pas envoyé.",
-        "Quand vous le demandez dans Mon CV, Créer son CV ou pour votre bilan, le contenu nécessaire (votre CV, l’annonce, votre profil LinkedIn importé, votre plan) est envoyé à l’IA pour préparer la réponse. Il n’est pas conservé sur notre serveur.",
+        "Quand vous le demandez (Mon CV, Créer son CV, idées de pistes, présentation d’un projet de financement, bilan), le contenu nécessaire (votre CV, l’annonce, votre profil LinkedIn importé, votre profil, vos pistes et vos entretiens, votre plan) est envoyé à l’IA pour préparer la réponse. Il n’est pas conservé sur notre serveur ; les textes rédigés restent sur votre téléphone.",
         "L’IA est le service Claude d’Anthropic (États-Unis). Anthropic n’utilise pas ces données pour entraîner ses modèles et ne les conserve que pour une durée limitée, pour la sécurité du service. Ce transfert hors de l’Union européenne est encadré par les clauses contractuelles types de la Commission européenne."
       ]
     },
@@ -166,7 +166,7 @@
     {
       "title": "Mises à jour",
       "lines": [
-        "Cette politique a été mise à jour le 28 septembre 2026. En cas de changement important, l’app vous en informera."
+        "Cette politique a été mise à jour le 29 septembre 2026. En cas de changement important, l’app vous en informera."
       ]
     }
   ],
@@ -188,7 +188,7 @@
     {
       "title": "Les offres et leurs prix",
       "lines": [
-        "Gratuit : les fonctions de base, sans paiement.",
+        "Gratuit : les fonctions de base, sans paiement et sans fonction d’intelligence artificielle.",
         "Pilote : abonnement mensuel, 19,90 € par mois.",
         "Premium : abonnement mensuel, 39,90 € par mois. Un premier abonnement Premium commence par 3 jours d’essai gratuit.",
         "Créer son CV : achat unique, 29,90 €, sans abonnement. Il est inclus dans Premium.",
@@ -263,7 +263,7 @@
       "lines": [
         "Ces conditions sont soumises au droit français. En cas de litige, les tribunaux compétents sont ceux prévus par la loi, notamment ceux de votre domicile si vous êtes consommateur.",
         "Nous pouvons modifier ces conditions. La version applicable est celle en vigueur à la date de votre achat ou de votre renouvellement ; un changement important vous est signalé dans l’application.",
-        "Conditions mises à jour le 28 septembre 2026."
+        "Conditions mises à jour le 29 septembre 2026."
       ]
     }
   ]

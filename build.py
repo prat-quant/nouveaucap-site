@@ -112,15 +112,20 @@ def shot(name, alt, cls=""):
 
 
 FEATURES = [
-    ("Faire le point", ["Votre runway : combien de mois vous pouvez tenir pendant la transition, avec la fin des droits ARE",
-                        "Le comparateur de pistes de métier", "Un plan de départ construit sur votre situation"]),
+    ("Faire le point, gratuitement", ["Votre runway : combien de mois vous pouvez tenir pendant la transition, avec la fin des droits ARE",
+                                      "Le comparateur de pistes de métier et un plan de départ pour vos 30 premiers jours",
+                                      "Le score de votre CV sur 100 et vos points faibles",
+                                      "L’essentiel de la VAE : durée, étapes, jury"]),
+    ("Trouver et financer", ["Des idées de métier proposées par le Copilote à partir de votre parcours, à tester sur le terrain",
+                             "Projet de transition professionnelle, CPF, démission, immersion : pour qui, étapes, délais, dossier",
+                             "Le calendrier à rebours de votre dossier et la formation financée dans votre runway",
+                             "Avec Premium : la présentation écrite de votre projet, rédigée avec l’IA"]),
     ("Avancer chaque semaine", ["Un plan d’action de 90 jours, en étapes concrètes", "Des fiches « Comment faire » avec méthode et scripts",
                                 "Des tests de pistes sur le terrain, avec un verdict", "Le feu vert financier et le mode Focus : 20 minutes, une tâche"]),
-    ("Votre CV et LinkedIn", ["Le score de votre CV et vos corrections prioritaires", "L’analyse d’une annonce : ce que le recruteur attend",
-                              "La réécriture par l’IA, sans jamais inventer de chiffre", "Créer son CV : PDF et Word adaptés à chaque annonce",
-                              "Votre titre et votre résumé LinkedIn"]),
-    ("Le Copilote IA", ["Vos questions à tout moment, par un assistant qui connaît votre parcours", "Des actions à ajouter à votre plan en un geste",
-                        "Avec Premium : un bilan de progression toutes les deux semaines", "Un module VAE : diagnostic, dossier et entraînement au jury"]),
+    ("Votre CV et LinkedIn", ["Vos corrections prioritaires et l’analyse d’une annonce", "La réécriture par l’IA, sans jamais inventer de chiffre",
+                              "Créer son CV : PDF et Word adaptés à chaque annonce", "Votre titre et votre résumé LinkedIn"]),
+    ("Le Copilote IA", ["Vos questions à tout moment, par un assistant qui connaît votre parcours (Pilote et Premium)", "Des actions à ajouter à votre plan en un geste",
+                        "Avec Premium : un bilan de progression toutes les deux semaines", "Avec Premium : le module VAE complet, diagnostic, dossier et entraînement au jury"]),
 ]
 
 
@@ -128,15 +133,19 @@ def faq():
     p = PRICES
     return [
         ("Qu’est-ce que Nouveau Cap ?",
-         "Une application Android pour les cadres de 40 ans et plus qui veulent changer de métier. Elle chiffre combien de mois vous pouvez tenir pendant la transition, compare vos pistes de métier, les transforme en plan d’action de 90 jours avec des tests sur le terrain, et prépare votre CV et votre profil LinkedIn, avec un Copilote IA qui connaît votre parcours."),
+         "Une application Android pour les cadres de 40 ans et plus qui veulent changer de métier. Elle chiffre combien de mois vous pouvez tenir pendant la transition, vous aide à trouver des idées de métier et à financer votre formation, compare vos pistes, les transforme en plan d’action de 90 jours avec des tests sur le terrain, et prépare votre CV et votre profil LinkedIn, avec un Copilote IA qui connaît votre parcours."),
         ("Nouveau Cap remplace-t-il l’Apec, un bilan de compétences ou un coach ?",
          "Non. Le conseil en évolution professionnelle de l’Apec est gratuit pour les cadres : utilisez-le. Un bilan de compétences ou un coach apportent un regard humain. Nouveau Cap fait le travail entre deux rendez-vous : chaque jour, à votre rythme, avec votre plan et vos chiffres."),
         ("Combien coûte Nouveau Cap ?",
-         f"Une version gratuite permet de faire le point par vous-même. L’offre Pilote coûte {p['pilote']} par mois, l’offre Premium {p['premium']} par mois avec {p['trialDays']} jours d’essai gratuit, et Créer son CV {p['cvBuilder']} en achat unique (inclus dans Premium). Sans engagement, résiliable à tout moment dans Google Play."),
+         f"Une version gratuite, sans IA, permet de faire le point par vous-même : runway, comparateur de pistes, fiches de financement, score de votre CV, essentiel de la VAE. L’offre Pilote coûte {p['pilote']} par mois, l’offre Premium {p['premium']} par mois avec {p['trialDays']} jours d’essai gratuit, et Créer son CV {p['cvBuilder']} en achat unique (inclus dans Premium). Sans engagement, résiliable à tout moment dans Google Play."),
         ("Quand sort l’application, et sur quels téléphones ?",
          "Nouveau Cap sort d’abord sur Android, via Google Play. La date n’est pas encore fixée : laissez votre adresse sur cette page pour être prévenu le jour de la sortie. Une version iPhone n’est pas encore prévue ; si vous êtes sur iPhone, dites-le dans le formulaire, cela nous aide à décider."),
         ("Comment savoir combien de mois je peux tenir pendant une reconversion ?",
          "Nouveau Cap calcule votre runway à partir de votre épargne, de vos dépenses, de vos allocations chômage (ARE) jusqu’à la fin de vos droits, et d’un éventuel nouveau revenu. Vous voyez le nombre de mois, la date où l’épargne serait épuisée, et l’effet d’un revenu d’appoint. Les montants d’ARE sont ceux que vous saisissez : l’app ne calcule pas vos droits à la place de France Travail."),
+        ("Comment financer ma reconversion avec Nouveau Cap ?",
+         "L’application présente quatre dispositifs : le projet de transition professionnelle, le CPF, la démission pour reconversion et l’immersion en entreprise. Pour chacun : à qui il s’adresse, ce qu’il finance, les étapes, les délais et les pièces du dossier, avec les sources officielles. Avec Pilote, vous obtenez le calendrier à rebours de votre dossier et vous ajoutez la rémunération de la formation à votre runway ; avec Premium, l’IA rédige un premier jet de la présentation de votre projet. Ce sont des informations générales : l’application ne dépose aucun dossier et ne remplace pas un conseiller en évolution professionnelle."),
+        ("Nouveau Cap propose-t-il des idées de reconversion ?",
+         "Oui, avec les offres Pilote et Premium : le Copilote propose des métiers à partir de votre parcours, de vos compétences et de vos motivations, avec leurs raisons et une première façon de les tester. Il ne donne aucun chiffre de salaire : vous vérifiez chaque piste sur le terrain, et vous la comparez aux autres dans l’application."),
         ("L’IA invente-t-elle des informations dans mon CV ?",
          "L’IA de Nouveau Cap est conçue pour ne jamais inventer de chiffre ni d’expérience : elle reformule ce que vous lui donnez. Vous relisez et validez tout. Rien n’est envoyé à l’IA sans votre accord, et un bouton permet de signaler une réponse."),
         ("Mes données sont-elles protégées ?",
@@ -180,10 +189,11 @@ def home():
         for t, items in FEATURES)
     gallery = "".join(shot(n, a) for n, a in [
         ("01_home", "Écran d’accueil : le mot du Copilote et le point de la semaine"),
-        ("03_plan", "Plan de 90 jours : les étapes de la semaine"),
-        ("05_creer", "Créer son CV : un CV adapté à chaque annonce"),
-        ("07_vae", "Module VAE : diagnostic, dossier et entraînement au jury"),
-        ("08_focus", "Mode Focus : 20 minutes, une tâche"),
+        ("02_financer", "Financer ma reconversion : le calendrier à rebours d’un projet de transition professionnelle"),
+        ("03_idees", "Idées de pistes : des métiers proposés à partir du parcours, ici l’exemple de Sophie"),
+        ("06_cv", "Mon CV : le score et les critères"),
+        ("07_creer", "Créer son CV : un CV adapté à chaque annonce"),
+        ("08_vae", "Module VAE : diagnostic, dossier et entraînement au jury"),
     ])
     questions = faq()
     faq_html = "".join(f'<details class="qa glass"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in questions)
@@ -198,7 +208,7 @@ def home():
       <a class="btn btn-ghost" href="#fonctions">Voir ce que fait l’app</a>
     </div>
   </div>
-  <div class="hero-shot">{shot('02_finances', 'Écran Finances : votre runway en mois, avec la fin des droits ARE', 'lift')}</div>
+  <div class="hero-shot">{shot('04_finances', 'Écran Finances : votre runway en mois, avec la fin des droits ARE', 'lift')}</div>
 </div></section>
 
 <section class="band" aria-labelledby="m"><div class="wrap">
