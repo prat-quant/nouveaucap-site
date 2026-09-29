@@ -230,8 +230,8 @@ def home():
 <section id="offres" class="band" aria-labelledby="o"><div class="wrap">
   <div class="head"><p class="eyebrow">Offres</p><h2 id="o">Simple, sans engagement.</h2><p class="lead">Résiliable à tout moment dans Google Play.</p></div>
   <div class="plans">
-    <article class="card glass"><h3>Gratuit</h3><p class="price">0 €</p><p>Faire le point par vous-même : runway, comparateur de pistes, plan de départ, Copilote pour découvrir.</p></article>
-    <article class="card glass"><h3>Pilote</h3><p class="price">{esc(p['pilote'])} <small>/ mois</small></p><p>La méthode guidée pour avancer chaque semaine : plan de 90 jours, fiches, tests de pistes, Mon CV.</p></article>
+    <article class="card glass"><h3>Gratuit</h3><p class="price">0 €</p><p>Faire le point par vous-même, sans IA : runway, comparateur de pistes, plan de départ, exemples de ce que fait le Copilote.</p></article>
+    <article class="card glass"><h3>Pilote</h3><p class="price">{esc(p['pilote'])} <small>/ mois</small></p><p>La méthode guidée pour avancer chaque semaine : plan de 90 jours, fiches, tests de pistes, Mon CV, le Copilote IA (10 messages par jour).</p></article>
     <article class="card glass best"><h3>Premium <span class="tag">recommandé</span></h3><p class="price">{esc(p['premium'])} <small>/ mois</small></p><p>Le suivi rapproché : bilan toutes les deux semaines, Copilote et fonctions IA sans limite, Créer son CV inclus. {p['trialDays']} jours d’essai gratuit pour un premier abonnement.</p></article>
     <article class="card glass"><h3>Créer son CV</h3><p class="price">{esc(p['cvBuilder'])}</p><p>Achat unique, sans abonnement : votre CV rédigé par l’IA à partir de vos réponses, adapté à chaque annonce.</p></article>
   </div>
