@@ -1,6 +1,7 @@
-// Prints the guides built by guides.py (build/guides/*.html) to docs/guides/<slug>.pdf, A4, with a small
+// Prints the guides built by guides.py (build/guides/*.html) to guides/pdf/<slug>.pdf, A4, with a small
 // footer (guide name and page number). Needs Node and Playwright with Chromium (present in Claude Code
-// cloud sessions). Usage, from the repository root: python3 guides.py && node scripts/guides-pdf.js [slug]
+// cloud sessions). Usage, from the repository root: python3 guides.py && node scripts/guides-pdf.js [slug] && python3 build.py
+// (build.py copies guides/pdf/ to docs/guides/, since it rebuilds docs/ from scratch)
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -28,21 +29,21 @@ const server = http.createServer((req, res) => {
   const only = process.argv[2];
   const slugs = fs.readdirSync(path.join(ROOT, 'build', 'guides')).filter(f => f.endsWith('.html'))
     .map(f => f.slice(0, -5)).filter(s => !only || s === only);
-  fs.mkdirSync(path.join(ROOT, 'docs', 'guides'), { recursive: true });
+  fs.mkdirSync(path.join(ROOT, 'guides', 'pdf'), { recursive: true });
   const browser = await playwright.chromium.launch();
   const page = await browser.newPage();
   for (const slug of slugs) {
     await page.goto(`${base}/build/guides/${slug}.html`, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
     const short = await page.getAttribute('meta[name=short]', 'content');
-    const out = path.join(ROOT, 'docs', 'guides', `${slug}.pdf`);
+    const out = path.join(ROOT, 'guides', 'pdf', `${slug}.pdf`);
     await page.pdf({
       path: out, format: 'A4', printBackground: true, preferCSSPageSize: true, displayHeaderFooter: true,
       headerTemplate: '<span></span>',
       footerTemplate: `<div style="width:100%;font:7.5px Arial,sans-serif;color:#6F7E94;padding:0 15mm;display:flex;justify-content:space-between">
         <span>Nouveau Cap · ${short} · nouveaucap.pixapop.fr</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`
     });
-    console.log(`docs/guides/${slug}.pdf`);
+    console.log(`guides/pdf/${slug}.pdf`);
   }
   await browser.close();
   server.close();

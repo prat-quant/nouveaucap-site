@@ -428,6 +428,8 @@ def main():
         shutil.rmtree(OUT)
     OUT.mkdir()
     shutil.copytree(ROOT / "assets", OUT / "assets")
+    if (ROOT / "guides" / "pdf").exists():
+        shutil.copytree(ROOT / "guides" / "pdf", OUT / "guides")
     (OUT / "CNAME").write_text("nouveaucap.pixapop.fr\n", encoding="utf-8")
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
     paths = [home(), *legal_pages(), *blog_pages()]
