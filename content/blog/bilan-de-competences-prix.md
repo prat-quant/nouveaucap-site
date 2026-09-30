@@ -2,7 +2,7 @@ title: Bilan de compétences : prix, CPF et alternatives en 2026
 description: Bilan de compétences prix 2026 : coût moyen, plafond CPF de 1 600 €, reste à charge de 150 €, cas gratuits, choix de l'organisme et alternatives.
 slug: bilan-de-competences-prix
 keyword: bilan de compétences prix
-updated: 2026-09-30
+updated: 2026-09-29
 order: 6
 ---
 
@@ -87,7 +87,7 @@ Le bilan n'est pas le seul moyen de réfléchir à votre avenir professionnel. V
 | Bilan de compétences | Libre ; 1 930 € en moyenne sur CPF en 2025 | Jusqu'à 24 h encadrées, tests, 3 phases, document de synthèse | Vous ne savez pas quelle direction prendre et voulez un cadre structuré |
 | Conseil en évolution professionnelle (CEP) | Gratuit | Un conseiller, des entretiens personnalisés et confidentiels, une aide pour construire le projet et le financer | Tout actif ; l'Apec pour les cadres, en poste ou en recherche d'emploi |
 | Coach privé | Libre, sans barème officiel | Un accompagnement sur mesure, sans cadre légal comme celui du bilan | Vous avez un objectif précis et un budget personnel |
-| Application Nouveau Cap (à venir) | Gratuit ; Pilote 29,90 €/mois ; Premium 69,90 €/mois | Un outil entre les rendez-vous : runway, comparaison de pistes, plan de 90 jours. Ce n'est pas un bilan | Cadres de 40 ans et plus qui ont des pistes et veulent avancer chaque semaine |
+| Application Nouveau Cap (à venir) | Gratuit ; Pilote 19,90 €/mois ; Premium 39,90 €/mois | Un outil entre les rendez-vous : runway, comparaison de pistes, plan de 90 jours. Ce n'est pas un bilan | Cadres de 40 ans et plus qui ont des pistes et veulent avancer chaque semaine |
 
 Le **CEP** est un service public gratuit, personnalisé et confidentiel, accessible à tous les actifs. L'Apec en est l'opérateur pour les cadres depuis 2014. Pour beaucoup de cadres, c'est le premier rendez-vous à prendre, avant de dépenser des droits CPF que vous ne pourrez plus mobiliser pour un autre bilan pendant cinq ans.
 
