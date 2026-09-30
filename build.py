@@ -441,7 +441,8 @@ def publish_guides():
             continue
         shutil.copy(pdf, out / pdf.name)
         catalogue.append({"slug": g["slug"], "title": g["title"], "pdf": f"/telechargement/{pdf.name}",
-                          "article": f"/blog/{art['slug']}/", "article_title": art["title"]})
+                          "article": f"/blog/{art['slug']}/", "article_title": art["title"],
+                          "first_step": g.get("first_step", "")})
     (out / "index.json").write_text(json.dumps(catalogue, ensure_ascii=False, indent=1), encoding="utf-8")
 
 

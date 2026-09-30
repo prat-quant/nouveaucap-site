@@ -4,55 +4,63 @@
   "title": "Bilan de compétences : choisir sans se tromper",
   "pdf": "/telechargement/guide-bilan-de-competences-prix.pdf",
   "article": "/blog/bilan-de-competences-prix/",
-  "article_title": "Bilan de compétences : prix, CPF et alternatives en 2026"
+  "article_title": "Bilan de compétences : prix, CPF et alternatives en 2026",
+  "first_step": "Avant de contacter un organisme, écrivez en une phrase la question à laquelle votre bilan doit répondre (page 3). Puis faites le test de la page 1 : un conseiller en évolution professionnelle, gratuit, suffit parfois."
  },
  {
   "slug": "guide-cv-reconversion-professionnelle",
   "title": "Votre CV de reconversion, pas à pas",
   "pdf": "/telechargement/guide-cv-reconversion-professionnelle.pdf",
   "article": "/blog/cv-reconversion-professionnelle/",
-  "article_title": "CV reconversion professionnelle : exemple commenté après 40 ans"
+  "article_title": "CV reconversion professionnelle : exemple commenté après 40 ans",
+  "first_step": "Prenez une annonce qui vous attire vraiment et remplissez la grille de la page 1. Chaque mot indispensable de l'annonce doit trouver une preuve dans votre parcours ; les cases vides vous disent quoi apprendre ou tester avant d'envoyer votre CV."
  },
  {
   "slug": "guide-demission-rupture-conventionnelle-reconversion",
   "title": "Quitter son poste sans perdre ses droits",
   "pdf": "/telechargement/guide-demission-rupture-conventionnelle-reconversion.pdf",
   "article": "/blog/demission-rupture-conventionnelle-reconversion/",
-  "article_title": "Démissionner pour se reconvertir : quels droits au chômage ?"
+  "article_title": "Démissionner pour se reconvertir : quels droits au chômage ?",
+  "first_step": "Suivez l'arbre de décision de la page 1 avant toute conversation avec votre employeur. Et retenez la règle de la page 2 : on ne démissionne pas avant d'avoir en main l'attestation de Transitions Pro."
  },
  {
   "slug": "guide-financer-sa-reconversion",
   "title": "Financer sa reconversion : votre plan de financement",
   "pdf": "/telechargement/guide-financer-sa-reconversion.pdf",
   "article": "/blog/financer-sa-reconversion/",
-  "article_title": "Financer sa reconversion en 2026 : CPF, PTP et autres aides"
+  "article_title": "Financer sa reconversion en 2026 : CPF, PTP et autres aides",
+  "first_step": "Remplissez les premières lignes du plan de financement (page 2) avec votre devis et le solde de votre CPF, visible sur moncompteformation.gouv.fr. L'écart vous dit tout de suite quels autres financeurs solliciter."
  },
  {
   "slug": "guide-idees-de-reconversion-professionnelle",
   "title": "Idée de reconversion : le carnet de vos pistes",
   "pdf": "/telechargement/guide-idees-de-reconversion-professionnelle.pdf",
   "article": "/blog/idees-de-reconversion-professionnelle/",
-  "article_title": "Idée de reconversion professionnelle après 40 ans : trouver et tester"
+  "article_title": "Idée de reconversion professionnelle après 40 ans : trouver et tester",
+  "first_step": "Remplissez l'inventaire de la page 1 et le tableau des contraintes de la page 2 avant de chercher des idées. Une piste qui heurte une contrainte non négociable sort de la liste tout de suite : vous gagnez des semaines."
  },
  {
   "slug": "guide-projet-de-transition-professionnelle",
   "title": "Projet de transition professionnelle : le kit de votre dossier",
   "pdf": "/telechargement/guide-projet-de-transition-professionnelle.pdf",
   "article": "/blog/projet-de-transition-professionnelle/",
-  "article_title": "Projet de transition professionnelle : le guide 2026 pour les cadres"
+  "article_title": "Projet de transition professionnelle : le guide 2026 pour les cadres",
+  "first_step": "Ouvrez la page 2 et inscrivez la date d'entrée en formation que vous visez. Cherchez ensuite, sur le site de Transitions Pro de votre région, la date limite de dépôt qui y correspond : c'est elle qui fixe tout le reste, y compris la date de votre lettre à l'employeur."
  },
  {
   "slug": "guide-reconversion-combien-de-mois-tenir",
   "title": "Le cahier de trésorerie de votre reconversion",
   "pdf": "/telechargement/guide-reconversion-combien-de-mois-tenir.pdf",
   "article": "/blog/reconversion-combien-de-mois-tenir/",
-  "article_title": "Reconversion : combien de mois pouvez-vous tenir financièrement ?"
+  "article_title": "Reconversion : combien de mois pouvez-vous tenir financièrement ?",
+  "first_step": "Commencez par la page 2 : relevez vos dépenses sur vos relevés bancaires des douze derniers mois, pas de mémoire. C'est la ligne qui change le plus le résultat final."
  },
  {
   "slug": "guide-vae-duree-etapes-jury",
   "title": "VAE : votre feuille de route, de la candidature au jury",
   "pdf": "/telechargement/guide-vae-duree-etapes-jury.pdf",
   "article": "/blog/vae-duree-etapes-jury/",
-  "article_title": "VAE : durée, étapes et jury, comment faire en 2026"
+  "article_title": "VAE : durée, étapes et jury, comment faire en 2026",
+  "first_step": "Faites le test de la page 1, puis cherchez votre diplôme exact sur vae.gouv.fr et récupérez son référentiel. Tout votre dossier se construit à partir de ce document."
  }
 ]
