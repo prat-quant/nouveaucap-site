@@ -14,8 +14,8 @@
     "website": "www.pixapop.fr"
   },
   "prices": {
-    "pilote": "19,90 €",
-    "premium": "39,90 €",
+    "pilote": "29,90 €",
+    "premium": "69,90 €",
     "cvBuilder": "29,90 €",
     "trialDays": 3
   },
@@ -190,8 +190,8 @@
       "title": "Les offres et leurs prix",
       "lines": [
         "Gratuit : les fonctions de base, sans paiement et sans fonction d’intelligence artificielle.",
-        "Pilote : abonnement mensuel, 19,90 € par mois.",
-        "Premium : abonnement mensuel, 39,90 € par mois. Un premier abonnement Premium commence par 3 jours d’essai gratuit.",
+        "Pilote : abonnement mensuel, 29,90 € par mois.",
+        "Premium : abonnement mensuel, 69,90 € par mois. Un premier abonnement Premium commence par 3 jours d’essai gratuit.",
         "Créer son CV : achat unique, 29,90 €, sans abonnement. Il est inclus dans Premium.",
         "Le contenu de chaque offre est décrit dans l’application (Réglages, « Mon abonnement »). Les prix sont indiqués toutes taxes comprises, en euros. Le prix qui s’applique est celui affiché par Google Play au moment de l’achat."
       ]
