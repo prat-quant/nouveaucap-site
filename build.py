@@ -486,14 +486,14 @@ def legal_pages():
         ("Liste d’attente", [
             "Finalité : vous prévenir par e-mail du lancement de l’application Nouveau Cap, et rien d’autre. Base : votre consentement, donné en cochant la case du formulaire.",
             "Données : votre adresse e-mail, le type de téléphone si vous l’indiquez, la page d’inscription, la date et le texte accepté. Pour limiter les abus, une empreinte non réversible de votre connexion est conservée 24 heures.",
-            "Hébergement : Supabase, serveurs situés à Paris. Aucune revente, aucune publicité, aucun partage.",
-            "Durée : l’adresse est effacée 30 jours après l’e-mail de lancement, et au plus tard 12 mois après l’inscription."]),
+            "Hébergement : Supabase, serveurs situés à Paris. Le jour du lancement, votre adresse est transmise à MailerLite (UAB MailerLite, Vilnius, Lituanie, Union européenne), qui envoie cet unique e-mail pour notre compte. Aucune revente, aucune publicité, aucun partage.",
+            "Durée : l’adresse est effacée 30 jours après l’e-mail de lancement, chez nous comme chez MailerLite, et au plus tard 12 mois après l’inscription."]),
         ("Guides gratuits", [blog.nbsp(x) for x in [
             "Finalité : vous envoyer par e-mail le guide que vous demandez. Et, seulement si vous cochez la case prévue, vous envoyer les nouvelles de Nouveau Cap (lancement de l’application, prochains guides et conseils), un e-mail par mois au plus.",
             "Base : votre demande pour l’envoi du guide ; votre consentement, donné en cochant la case, pour les nouvelles. La case n’est jamais cochée d’avance, et le guide vous est envoyé même si vous ne la cochez pas.",
             "Données : votre adresse e-mail, le guide demandé, la page d’où vous le demandez, la date et, si vous cochez la case, le texte accepté. Pour limiter les abus, une empreinte non réversible de votre connexion est conservée 24 heures.",
-            "Hébergement : Supabase, serveurs situés à Paris. Les e-mails partent d’une boîte e-mail hébergée par o2switch, en France. Aucune revente, aucune publicité, aucun partage.",
-            "Durée : sans la case cochée, l’adresse est effacée 30 jours après votre demande. Avec la case cochée, elle est conservée 24 mois après votre dernière demande, ou jusqu’à votre désinscription.",
+            "Hébergement : Supabase, serveurs situés à Paris. Le guide part d’une boîte e-mail hébergée par o2switch, en France. Si vous cochez la case, votre adresse, le titre du guide demandé et ses liens sont aussi transmis à MailerLite (UAB MailerLite, Vilnius, Lituanie, Union européenne), qui envoie les nouvelles pour notre compte. Aucune revente, aucune publicité, aucun partage.",
+            "Durée : sans la case cochée, l’adresse est effacée 30 jours après votre demande et n’est jamais transmise à MailerLite. Avec la case cochée, elle est conservée 24 mois après votre dernière demande, ou jusqu’à votre désinscription. Après une désinscription, MailerLite garde seulement la mention « désinscrit », pour ne plus jamais vous écrire.",
             "Désinscription : si vous avez coché la case, chaque e-mail contient un lien pour vous désinscrire en un clic. Vous ne recevez alors plus rien, et votre adresse est effacée dans les 30 jours."]], "guides"),
         ("Hébergement du site", ["Le site est hébergé par GitHub Pages (GitHub, Inc., États-Unis), qui peut conserver temporairement l’adresse IP des visiteurs pour la sécurité du service."]),
         ("Vos droits", [e(f"Chaque e-mail contient un lien de désinscription immédiate. Vous pouvez aussi écrire à {EMAIL} pour accéder à vos données, les corriger ou les effacer, et saisir la CNIL (cnil.fr).")]),
@@ -502,7 +502,7 @@ def legal_pages():
     notice = [
         ("Éditeur", [e(f"Pixapop, nom commercial de {PUB['name']}, {PUB['legalForm']}."), e(f"Adresse : {PUB['address']}."),
                      e(f"SIRET : {PUB['siret']}."), e(f"Directeur de la publication : {PUB['director']}."), e(f"Contact : {EMAIL}.")]),
-        ("Hébergement", ["GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (service GitHub Pages). Compteur de visites, liste d’attente et guides gratuits : Supabase, serveurs situés à Paris. Envoi des guides par e-mail : boîte e-mail hébergée par o2switch, en France."]),
+        ("Hébergement", ["GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (service GitHub Pages). Compteur de visites, liste d’attente et guides gratuits : Supabase, serveurs situés à Paris. Envoi des guides par e-mail : boîte e-mail hébergée par o2switch, en France. Envoi des nouvelles et de l’e-mail de lancement : MailerLite (UAB MailerLite, Vilnius, Lituanie)."]),
         ("Application", [f"Les mentions légales, conditions et politique de confidentialité de l’application Nouveau Cap sont sur <a href=\"{APP_NOTICE}\">pixapop.fr</a>."]),
         ("Propriété intellectuelle", ["Les textes, images et logos de ce site appartiennent à Pixapop, sauf mention contraire. Toute reproduction sans autorisation est interdite.",
                                      "Polices Sora et Manrope, sous licence SIL Open Font License 1.1."]),
