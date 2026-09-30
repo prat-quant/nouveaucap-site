@@ -5,7 +5,8 @@
   "pdf": "/telechargement/guide-bilan-de-competences-prix.pdf",
   "article": "/blog/bilan-de-competences-prix/",
   "article_title": "Bilan de compétences : prix, CPF et alternatives en 2026",
-  "first_step": "Avant de contacter un organisme, écrivez en une phrase la question à laquelle votre bilan doit répondre (page 3). Puis faites le test de la page 1 : un conseiller en évolution professionnelle, gratuit, suffit parfois."
+  "first_step": "Écrivez en une phrase ce que vous attendez du bilan. Par exemple : « Savoir si je peux devenir formateur. » Puis lisez la page 1 du guide : elle vous dit si un bilan payant vous sera vraiment utile, ou si un conseiller gratuit suffit.",
+  "short": "Choisir son bilan de compétences"
  },
  {
   "slug": "guide-cv-reconversion-professionnelle",
@@ -13,7 +14,8 @@
   "pdf": "/telechargement/guide-cv-reconversion-professionnelle.pdf",
   "article": "/blog/cv-reconversion-professionnelle/",
   "article_title": "CV reconversion professionnelle : exemple commenté après 40 ans",
-  "first_step": "Prenez une annonce qui vous attire vraiment et remplissez la grille de la page 1. Chaque mot indispensable de l'annonce doit trouver une preuve dans votre parcours ; les cases vides vous disent quoi apprendre ou tester avant d'envoyer votre CV."
+  "first_step": "Choisissez une offre d'emploi qui vous plaît vraiment. Soulignez les mots qui reviennent le plus. Pour chacun, notez un exemple tiré de votre parcours (page 1 du guide). Là où vous n'avez pas d'exemple, vous savez ce qu'il faut travailler.",
+  "short": "CV de reconversion pas à pas"
  },
  {
   "slug": "guide-demission-rupture-conventionnelle-reconversion",
@@ -21,7 +23,8 @@
   "pdf": "/telechargement/guide-demission-rupture-conventionnelle-reconversion.pdf",
   "article": "/blog/demission-rupture-conventionnelle-reconversion/",
   "article_title": "Démissionner pour se reconvertir : quels droits au chômage ?",
-  "first_step": "Suivez l'arbre de décision de la page 1 avant toute conversation avec votre employeur. Et retenez la règle de la page 2 : on ne démissionne pas avant d'avoir en main l'attestation de Transitions Pro."
+  "first_step": "Ne parlez pas encore de départ à votre employeur. Suivez d'abord le parcours de la page 1 du guide : il vous montre quelle façon de partir garde vos droits au chômage. Et retenez une règle : pas de démission avant d'avoir reçu l'attestation de Transitions Pro.",
+  "short": "Partir sans perdre ses droits"
  },
  {
   "slug": "guide-financer-sa-reconversion",
@@ -29,7 +32,8 @@
   "pdf": "/telechargement/guide-financer-sa-reconversion.pdf",
   "article": "/blog/financer-sa-reconversion/",
   "article_title": "Financer sa reconversion en 2026 : CPF, PTP et autres aides",
-  "first_step": "Remplissez les premières lignes du plan de financement (page 2) avec votre devis et le solde de votre CPF, visible sur moncompteformation.gouv.fr. L'écart vous dit tout de suite quels autres financeurs solliciter."
+  "first_step": "Notez deux chiffres en haut de la page 2 du guide : le prix de la formation que vous visez, et la somme disponible sur votre compte formation (sur moncompteformation.gouv.fr). La différence entre les deux, c'est ce qu'il vous reste à trouver.",
+  "short": "Plan de financement de reconversion"
  },
  {
   "slug": "guide-idees-de-reconversion-professionnelle",
@@ -37,7 +41,8 @@
   "pdf": "/telechargement/guide-idees-de-reconversion-professionnelle.pdf",
   "article": "/blog/idees-de-reconversion-professionnelle/",
   "article_title": "Idée de reconversion professionnelle après 40 ans : trouver et tester",
-  "first_step": "Remplissez l'inventaire de la page 1 et le tableau des contraintes de la page 2 avant de chercher des idées. Une piste qui heurte une contrainte non négociable sort de la liste tout de suite : vous gagnez des semaines."
+  "first_step": "Avant de chercher un nouveau métier, écrivez ce que vous ne voulez pas perdre : un salaire minimum, votre ville, du temps en famille. C'est la page 2 du guide. Tout métier qui ne respecte pas ces limites sort de la liste tout de suite.",
+  "short": "Le carnet de vos pistes"
  },
  {
   "slug": "guide-projet-de-transition-professionnelle",
@@ -45,7 +50,8 @@
   "pdf": "/telechargement/guide-projet-de-transition-professionnelle.pdf",
   "article": "/blog/projet-de-transition-professionnelle/",
   "article_title": "Projet de transition professionnelle : le guide 2026 pour les cadres",
-  "first_step": "Ouvrez la page 2 et inscrivez la date d'entrée en formation que vous visez. Cherchez ensuite, sur le site de Transitions Pro de votre région, la date limite de dépôt qui y correspond : c'est elle qui fixe tout le reste, y compris la date de votre lettre à l'employeur."
+  "first_step": "Choisissez le mois où vous aimeriez commencer votre formation et écrivez-le en haut de la page 2 du guide. Puis cherchez, sur le site de Transitions Pro de votre région, la date limite pour déposer votre dossier. Tout le reste se calcule à partir de ces deux dates.",
+  "short": "Kit du projet de transition professionnelle"
  },
  {
   "slug": "guide-reconversion-combien-de-mois-tenir",
@@ -53,7 +59,8 @@
   "pdf": "/telechargement/guide-reconversion-combien-de-mois-tenir.pdf",
   "article": "/blog/reconversion-combien-de-mois-tenir/",
   "article_title": "Reconversion : combien de mois pouvez-vous tenir financièrement ?",
-  "first_step": "Commencez par la page 2 : relevez vos dépenses sur vos relevés bancaires des douze derniers mois, pas de mémoire. C'est la ligne qui change le plus le résultat final."
+  "first_step": "Prenez vos relevés de compte des 12 derniers mois et notez, page 2 du guide, ce que vous avez vraiment dépensé. Ne le faites pas de mémoire : on oublie beaucoup de dépenses, et c'est ce chiffre qui compte le plus.",
+  "short": "Cahier de trésorerie de la reconversion"
  },
  {
   "slug": "guide-vae-duree-etapes-jury",
@@ -61,6 +68,7 @@
   "pdf": "/telechargement/guide-vae-duree-etapes-jury.pdf",
   "article": "/blog/vae-duree-etapes-jury/",
   "article_title": "VAE : durée, étapes et jury, comment faire en 2026",
-  "first_step": "Faites le test de la page 1, puis cherchez votre diplôme exact sur vae.gouv.fr et récupérez son référentiel. Tout votre dossier se construit à partir de ce document."
+  "first_step": "Faites le test de la page 1 du guide : il vous dit en quelques minutes si la VAE est faite pour vous. Si oui, cherchez sur vae.gouv.fr le diplôme exact que vous visez, et téléchargez la liste de ce qu'il demande (on l'appelle le référentiel).",
+  "short": "Feuille de route VAE"
  }
 ]

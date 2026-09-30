@@ -30,8 +30,10 @@ VISIT_URL = FUNCTIONS + "/visite"
 CONSENT = ("J’accepte que Pixapop conserve mon adresse e-mail uniquement pour me prévenir du lancement de Nouveau Cap. "
            "Elle est effacée après l’annonce, et au plus tard 12 mois après mon inscription.")
 # Separate, unticked and optional box of the guide forms (CNIL rule): the guide is sent either way.
-GUIDE_NEWS = blog.nbsp("J’accepte de recevoir les nouvelles de Nouveau Cap par e-mail : lancement de l’application, "
-                       "prochains guides et conseils, un e-mail par mois au plus. Désinscription en un clic.")
+GUIDE_NEWS = blog.nbsp("Oui, envoyez-moi aussi 4 conseils pour avancer avec ce guide, puis les nouvelles de Nouveau Cap "
+                       "(l’application, les prochains guides), un e-mail par mois au plus. Désinscription en un clic.")
+# Google Play page of the app, set on launch day: /app/ then redirects there (link used in the e-mails).
+PLAY_URL = ""
 # The app's own legal pages stay on pixapop.fr: they are declared to Google Play and must never move.
 APP_PRIVACY = AGENCY + "/nouveau-cap/confidentialite/"
 APP_TERMS = AGENCY + "/nouveau-cap/conditions/"
@@ -334,7 +336,7 @@ def guide_form(g, source):
 def guide_tip(g):
     """Short box under the article header, pointing to the full guide block."""
     return f"""<aside class="guide-tip glass" aria-label="Guide gratuit">
-    <p><strong>{blog.nbsp("Guide gratuit à télécharger :")}</strong> {gtext(g["title"])} ({guide_pages(g)} pages à remplir)</p>
+    <p><strong>{blog.nbsp("Guide gratuit à télécharger :")}</strong> {gtext(g["title"])} ({guide_pages(g)} pages à imprimer)</p>
     <a class="btn btn-ghost" href="#guide">Recevoir le guide {ARROW}</a>
   </aside>"""
 
@@ -345,7 +347,7 @@ def guide_block(g, source):
     <h2 id="guide-t">{gtext(g["title"])}</h2>
     <p>{gtext(g["pitch"])}</p>
     {guide_contents(g)}
-    <p class="meta">PDF de {guide_pages(g)} pages, à imprimer ou remplir à l’écran</p>
+    <p class="meta">PDF de {guide_pages(g)} pages, à imprimer et à remplir au stylo</p>
     {guide_form(g, source)}
   </section>"""
 
@@ -361,7 +363,7 @@ def guides_teaser():
     cards = "".join(guide_card(g) for g in PUBLISHED[:4])
     return f"""<section class="band" aria-labelledby="gg"><div class="wrap">
   <div class="head"><p class="eyebrow">Guides gratuits</p><h2 id="gg">Des guides PDF à remplir, offerts.</h2>
-  <p class="lead">{blog.nbsp("Check-lists, tableaux et modèles pour avancer sur papier ou à l’écran : chaque guide accompagne un article du blog et vous est envoyé par e-mail.")}</p></div>
+  <p class="lead">{blog.nbsp("Check-lists, tableaux et modèles à imprimer : chaque guide accompagne un article du blog et vous est envoyé par e-mail.")}</p></div>
   <div class="posts">{cards}</div>
   <p style="margin-top:20px"><a class="btn btn-ghost" href="/guides/">Tous les guides {ARROW}</a></p>
 </div></section>"""
@@ -372,7 +374,7 @@ def guides_page():
     body = f"""<div class="wrap">
   <div class="head" style="padding-top:clamp(30px,6vw,60px)"><nav class="crumbs" aria-label="Fil d’Ariane"><a href="/">Nouveau Cap</a></nav>
   <p class="eyebrow">Guides gratuits</p><h1>Guides gratuits pour préparer votre reconversion</h1>
-  <p class="lead">{blog.nbsp("Chaque guide est un PDF de quelques pages à imprimer ou à remplir à l’écran : check-lists, tableaux, modèles. Il accompagne un article du blog et vous est envoyé par e-mail, gratuitement.")}</p></div>
+  <p class="lead">{blog.nbsp("Chaque guide est un PDF de quelques pages à imprimer et à remplir au stylo : check-lists, tableaux, modèles. Il accompagne un article du blog et vous est envoyé par e-mail, gratuitement.")}</p></div>
   <div class="posts guides-list">{cards}</div>
 </div>"""
     ld = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -489,7 +491,7 @@ def legal_pages():
             "Hébergement : Supabase, serveurs situés à Paris. Le jour du lancement, votre adresse est transmise à MailerLite (UAB MailerLite, Vilnius, Lituanie, Union européenne), qui envoie cet unique e-mail pour notre compte. Aucune revente, aucune publicité, aucun partage.",
             "Durée : l’adresse est effacée 30 jours après l’e-mail de lancement, chez nous comme chez MailerLite, et au plus tard 12 mois après l’inscription."]),
         ("Guides gratuits", [blog.nbsp(x) for x in [
-            "Finalité : vous envoyer par e-mail le guide que vous demandez. Et, seulement si vous cochez la case prévue, vous envoyer les nouvelles de Nouveau Cap (lancement de l’application, prochains guides et conseils), un e-mail par mois au plus.",
+            "Finalité : vous envoyer par e-mail le guide que vous demandez. Et, seulement si vous cochez la case prévue, vous envoyer 4 conseils pour avancer avec ce guide, puis les nouvelles de Nouveau Cap (l’application, les prochains guides), un e-mail par mois au plus.",
             "Base : votre demande pour l’envoi du guide ; votre consentement, donné en cochant la case, pour les nouvelles. La case n’est jamais cochée d’avance, et le guide vous est envoyé même si vous ne la cochez pas.",
             "Données : votre adresse e-mail, le guide demandé, la page d’où vous le demandez, la date et, si vous cochez la case, le texte accepté. Pour limiter les abus, une empreinte non réversible de votre connexion est conservée 24 heures.",
             "Hébergement : Supabase, serveurs situés à Paris. Le guide part d’une boîte e-mail hébergée par o2switch, en France. Si vous cochez la case, votre adresse, le titre du guide demandé et ses liens sont aussi transmis à MailerLite (UAB MailerLite, Vilnius, Lituanie, Union européenne), qui envoie les nouvelles pour notre compte. Aucune revente, aucune publicité, aucun partage.",
@@ -522,6 +524,23 @@ def unsubscribe():
     page("/desinscription/", "Se désinscrire · Nouveau Cap", "Se désinscrire de la liste d’attente de Nouveau Cap.", body, noindex=True)
 
 
+def app_link():
+    """/app/: the one link to the app used in e-mails and posts. Before launch it points to the waitlist;
+    on launch day, set PLAY_URL and it redirects to Google Play (no e-mail to edit)."""
+    if PLAY_URL:
+        body = f"""<meta http-equiv="refresh" content="0; url={esc(PLAY_URL)}"><div class="wrap narrow legal"><div class="paper glass center">
+  <h1>Nouveau Cap sur Google Play</h1>
+  <p><a class="btn btn-primary" href="{esc(PLAY_URL)}">Ouvrir Google Play {ARROW}</a></p>
+</div></div>"""
+    else:
+        body = f"""<div class="wrap narrow legal"><div class="paper glass center">
+  <p class="eyebrow">Bientôt sur Google Play</p><h1>Nouveau Cap arrive sur Android</h1>
+  <p class="lead">{blog.nbsp("L’application n’est pas encore publiée. Laissez votre adresse sur la page d’accueil : vous serez prévenu le jour de sa sortie.")}</p>
+  <p><a class="btn btn-primary" href="/#liste">Être prévenu {ARROW}</a></p>
+</div></div>"""
+    page("/app/", "Nouveau Cap sur Google Play", "Installer l’application Nouveau Cap sur Android.", body, noindex=True)
+
+
 def not_found():
     body = f"""<div class="wrap narrow legal"><div class="paper glass center">
   <p class="eyebrow">Erreur 404</p><h1>Cette page n’existe pas.</h1>
@@ -544,7 +563,7 @@ def publish_guides():
         shutil.copy(pdf, out / pdf.name)
         catalogue.append({"slug": g["slug"], "title": g["title"], "pdf": f"/telechargement/{pdf.name}",
                           "article": f"/blog/{art['slug']}/", "article_title": art["title"],
-                          "first_step": g.get("first_step", "")})
+                          "first_step": g.get("first_step", ""), "short": g.get("short", "")})
     (out / "index.json").write_text(json.dumps(catalogue, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
@@ -558,6 +577,7 @@ def main():
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
     paths = [home(), guides_page(), *legal_pages(), *blog_pages()]
     unsubscribe()
+    app_link()
     not_found()
     today = date.today().isoformat()
     (OUT / "sitemap.xml").write_text(
