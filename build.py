@@ -89,6 +89,7 @@ def page(path, title, description, body, *, jsonld=None, noindex=False):
     <p>© {YEAR} <a href="{AGENCY}/">Pixapop</a></p>
     <nav aria-label="Liens légaux">
       <a href="/blog/">Blog</a>
+      <a href="https://www.youtube.com/channel/UCwgrPyMgV04sl71rjCPfBGQ">YouTube</a>
       <a href="/confidentialite/">Confidentialité du site</a>
       <a href="/mentions-legales/">Mentions légales</a>
       <a href="{APP_PRIVACY}">Confidentialité de l’app</a>
