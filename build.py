@@ -25,6 +25,7 @@ YEAR = date.today().year
 # Supabase project pixapop-marketing (sources in the AIOS repo, projects/nouveau-cap-marketing/supabase/).
 FUNCTIONS = "https://nidcxvwmdezaxurcwivv.supabase.co/functions/v1"
 WAITLIST_URL = FUNCTIONS + "/liste-attente"
+GUIDE_URL = FUNCTIONS + "/guide"
 VISIT_URL = FUNCTIONS + "/visite"
 CONSENT = ("J’accepte que Pixapop conserve mon adresse e-mail uniquement pour me prévenir du lancement de Nouveau Cap. "
            "Elle est effacée après l’annonce, et au plus tard 12 mois après mon inscription.")
@@ -408,10 +409,10 @@ def legal_pages():
 
 def unsubscribe():
     body = f"""<div class="wrap narrow legal"><div class="paper glass center">
-  <p class="eyebrow">Liste d’attente</p>
+  <p class="eyebrow" data-unsub-kind>Liste d’attente</p>
   <h1>Se désinscrire</h1>
-  <p class="lead">Vous ne recevrez plus d’e-mail au sujet du lancement, et votre adresse sera effacée de notre liste.</p>
-  <p><button class="btn btn-primary" type="button" data-unsubscribe data-endpoint="{WAITLIST_URL}">Confirmer la désinscription</button></p>
+  <p class="lead" data-unsub-lead>Vous ne recevrez plus d’e-mail au sujet du lancement, et votre adresse sera effacée de notre liste.</p>
+  <p><button class="btn btn-primary" type="button" data-unsubscribe data-endpoint="{WAITLIST_URL}" data-endpoint-guide="{GUIDE_URL}">Confirmer la désinscription</button></p>
   <p class="wl-status" role="status" aria-live="polite"></p>
 </div></div>"""
     page("/desinscription/", "Se désinscrire · Nouveau Cap", "Se désinscrire de la liste d’attente de Nouveau Cap.", body, noindex=True)

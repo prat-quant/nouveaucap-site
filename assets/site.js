@@ -18,6 +18,7 @@
     rate_limited: 'Trop d’essais depuis cette connexion. Réessayez dans une heure.',
     network: 'L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.',
     left: 'C’est fait : votre adresse a été effacée de la liste.',
+    left_guide: 'C’est fait : vous ne recevrez plus nos nouvelles. Votre adresse sera effacée dans 30 jours.',
     bad_link: 'Ce lien de désinscription est incomplet. Écrivez-nous à contact@pixapop.fr, nous vous retirons de la liste.'
   };
   function say(el, key, ok) {
@@ -58,12 +59,19 @@
   var leave = document.querySelector('[data-unsubscribe]');
   if (leave) {
     var status = document.querySelector('.wl-status');
-    var token = new URLSearchParams(location.search).get('t') || '';
+    var params = new URLSearchParams(location.search), token = params.get('t') || '';
+    // Links in guide e-mails carry k=guide: they stop the news, the guide itself stays yours.
+    var endpoint = leave.getAttribute('data-endpoint'), done = 'left';
+    if (params.get('k') === 'guide') {
+      endpoint = leave.getAttribute('data-endpoint-guide'); done = 'left_guide';
+      document.querySelector('[data-unsub-kind]').textContent = 'Guides Nouveau Cap';
+      document.querySelector('[data-unsub-lead]').textContent = 'Vous ne recevrez plus nos nouvelles (lancement de l’application, prochains guides). Votre adresse sera effacée dans 30 jours.';
+    }
     if (!/^[0-9a-f-]{36}$/i.test(token)) { leave.disabled = true; say(status, 'bad_link'); }
     leave.addEventListener('click', function () {
       leave.disabled = true;
-      post(leave.getAttribute('data-endpoint'), { action: 'leave', token: token }).then(function (res) {
-        if (res && res.ok) say(status, 'left', true); else { leave.disabled = false; say(status, 'network'); }
+      post(endpoint, { action: 'leave', token: token }).then(function (res) {
+        if (res && res.ok) say(status, done, true); else { leave.disabled = false; say(status, 'network'); }
       }, function () { leave.disabled = false; say(status, 'network'); });
     });
   }
