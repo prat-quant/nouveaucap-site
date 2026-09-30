@@ -1,4 +1,4 @@
-// Nouveau Cap website: launch waitlist, unsubscribe page and a cookieless visit counter.
+// Nouveau Cap website: launch waitlist, free PDF guides, unsubscribe page and a cookieless visit counter.
 (function () {
   // Visit counter: sends only the page path and the referring site's name. No cookie, nothing stored on
   // the device, no identifier. Skipped when the browser asks not to be tracked, and on local previews.
@@ -19,7 +19,13 @@
     network: 'L’envoi n’a pas abouti. Vérifiez votre connexion et réessayez.',
     left: 'C’est fait : votre adresse a été effacée de la liste.',
     left_guide: 'C’est fait : vous ne recevrez plus nos nouvelles. Votre adresse sera effacée dans 30 jours.',
-    bad_link: 'Ce lien de désinscription est incomplet. Écrivez-nous à contact@pixapop.fr, nous vous retirons de la liste.'
+    bad_link: 'Ce lien de désinscription est incomplet. Écrivez-nous à contact@pixapop.fr, nous vous retirons de la liste.',
+    guide_sent: 'C’est envoyé. Le guide arrive dans quelques minutes à l’adresse indiquée (pensez à regarder dans les indésirables).',
+    guide_ready: 'Votre guide est prêt\u00a0: ',
+    guide_link: 'Télécharger le PDF',
+    bad_guide: 'Ce guide n’est pas disponible pour le moment. Écrivez-nous à contact@pixapop.fr, nous vous l’envoyons.',
+    guide_no_consent: 'Votre accord pour les nouvelles n’a pas été transmis. Rechargez la page et réessayez, ou décochez la case.',
+    server: 'Le service est momentanément indisponible. Réessayez dans quelques minutes.'
   };
   function say(el, key, ok) {
     el.textContent = MESSAGES[key] || MESSAGES.network;
@@ -50,6 +56,42 @@
       }).then(function (res) {
         if (res && res.ok) { say(status, 'ok', true); form.reset(); }
         else say(status, res && res.error);
+      }, function () { say(status, 'network'); })
+        .then(function () { button.disabled = false; });
+    });
+  });
+
+  // Free PDF guides: the guide is always sent; the news only with the separate, unticked box (CNIL rule).
+  // When e-mail sending is unavailable, the server returns a direct link, shown without any innerHTML.
+  document.querySelectorAll('form[data-guide-form]').forEach(function (form) {
+    var status = form.querySelector('.wl-status');
+    var button = form.querySelector('button[type=submit]');
+    var email = form.elements.email;
+    function ready(url) {
+      var a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = MESSAGES.guide_link;
+      status.textContent = MESSAGES.guide_ready;
+      status.appendChild(a);
+      status.className = 'wl-status ok';
+    }
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var value = email.value.trim();
+      email.removeAttribute('aria-invalid');
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) { email.setAttribute('aria-invalid', 'true'); email.focus(); return say(status, 'invalid_email'); }
+      var news = form.elements.news.checked;
+      var payload = {
+        action: 'request', app: 'nouveau-cap', guide: form.getAttribute('data-guide'), email: value, news: news,
+        source: form.getAttribute('data-source'), website: form.elements.website.value
+      };
+      if (news) payload.consent = form.querySelector('[data-consent]').textContent;
+      button.disabled = true;
+      status.textContent = 'Envoi…'; status.className = 'wl-status';
+      post(form.getAttribute('data-endpoint'), payload).then(function (res) {
+        if (res && res.ok && res.sent) { say(status, 'guide_sent', true); form.reset(); }
+        else if (res && res.ok && typeof res.url === 'string' && /^https:\/\//.test(res.url)) { ready(res.url); form.reset(); }
+        else if (res && res.ok) say(status, 'server');
+        else say(status, res && (res.error === 'no_consent' ? 'guide_no_consent' : res.error));
       }, function () { say(status, 'network'); })
         .then(function () { button.disabled = false; });
     });

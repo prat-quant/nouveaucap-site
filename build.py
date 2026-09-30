@@ -29,6 +29,9 @@ GUIDE_URL = FUNCTIONS + "/guide"
 VISIT_URL = FUNCTIONS + "/visite"
 CONSENT = ("J’accepte que Pixapop conserve mon adresse e-mail uniquement pour me prévenir du lancement de Nouveau Cap. "
            "Elle est effacée après l’annonce, et au plus tard 12 mois après mon inscription.")
+# Separate, unticked and optional box of the guide forms (CNIL rule): the guide is sent either way.
+GUIDE_NEWS = blog.nbsp("J’accepte de recevoir les nouvelles de Nouveau Cap par e-mail : lancement de l’application, "
+                       "prochains guides et conseils, un e-mail par mois au plus. Désinscription en un clic.")
 # The app's own legal pages stay on pixapop.fr: they are declared to Google Play and must never move.
 APP_PRIVACY = AGENCY + "/nouveau-cap/confidentialite/"
 APP_TERMS = AGENCY + "/nouveau-cap/conditions/"
@@ -78,6 +81,7 @@ def page(path, title, description, body, *, jsonld=None, noindex=False):
     <a href="/#fonctions" class="hide-sm">L’app</a>
     <a href="/#offres" class="hide-sm">Offres</a>
     <a href="/blog/" class="hide-sm">Blog</a>
+    <a href="/guides/" class="hide-sm">Guides</a>
     <a href="/#liste" class="cta">Être prévenu</a>
   </nav>
 </div></header>
@@ -90,6 +94,7 @@ def page(path, title, description, body, *, jsonld=None, noindex=False):
     <p>© {YEAR} <a href="{AGENCY}/">Pixapop</a></p>
     <nav aria-label="Liens légaux">
       <a href="/blog/">Blog</a>
+      <a href="/guides/">Guides</a>
       <a href="https://www.youtube.com/channel/UCwgrPyMgV04sl71rjCPfBGQ">YouTube</a>
       <a href="/confidentialite/">Confidentialité du site</a>
       <a href="/mentions-legales/">Mentions légales</a>
@@ -261,6 +266,8 @@ def home():
 
 {blog_teaser()}
 
+{guides_teaser()}
+
 <section id="questions" class="band" aria-labelledby="q"><div class="wrap narrow">
   <div class="head"><p class="eyebrow">Questions fréquentes</p><h2 id="q">Ce qu’on nous demande.</h2></div>
   <div class="faq">{faq_html}</div>
@@ -288,6 +295,92 @@ def home():
 
 ARTICLES = blog.read_articles()
 GUIDES = guides.read_guides()
+_ARTICLE_SLUGS = {a["slug"] for a in ARTICLES}
+_ORDER = {a["slug"]: n for n, a in enumerate(ARTICLES)}
+# Guides offered on the site: those whose PDF exists and whose article is published, in the blog's order.
+PUBLISHED = sorted((g for g in GUIDES if (ROOT / "guides" / "pdf" / f"{g['slug']}.pdf").exists() and g.get("article") in _ARTICLE_SLUGS),
+                   key=lambda g: _ORDER[g["article"]])
+GUIDE_FOR = {g["article"]: g for g in PUBLISHED}
+
+
+def gtext(text):
+    """Guide header text, with French apostrophes and non-breaking spaces, escaped for HTML."""
+    return esc(blog.nbsp(text.replace("'", "’")), quote=False)
+
+
+def guide_pages(g):
+    return g["body"].count('<section class="page"')
+
+
+def guide_contents(g):
+    return '<ul class="checks">' + "".join(f"<li>{gtext(c.strip())}</li>" for c in g["contents"].split(" | ")) + "</ul>"
+
+
+def guide_form(g, source):
+    uid = "g-" + g["slug"]
+    return f"""<form class="wl-form" data-guide-form data-endpoint="{GUIDE_URL}" data-guide="{esc(g['slug'])}" data-source="{esc(source)}" novalidate>
+      <div class="wl-row">
+        <label class="wl-label" for="{uid}">Votre adresse e-mail</label>
+        <input class="wl-input" id="{uid}" type="email" name="email" autocomplete="email" inputmode="email" placeholder="prenom.nom@exemple.fr" required maxlength="254">
+      </div>
+      <div class="wl-hp" aria-hidden="true"><label>Ne pas remplir ce champ <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="wl-check"><input type="checkbox" name="news"> <span data-consent>{esc(GUIDE_NEWS)}</span></label>
+      <button class="btn btn-primary" type="submit">Recevoir le guide {ARROW}</button>
+      <p class="wl-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="note">Votre adresse sert à vous envoyer ce guide. Sans la case cochée, nous ne vous écrirons rien d’autre et l’effacerons dans 30 jours. <a href="/confidentialite/#guides">Confidentialité</a></p>"""
+
+
+def guide_tip(g):
+    """Short box under the article header, pointing to the full guide block."""
+    return f"""<aside class="guide-tip glass" aria-label="Guide gratuit">
+    <p><strong>{blog.nbsp("Guide gratuit à télécharger :")}</strong> {gtext(g["title"])} ({guide_pages(g)} pages à remplir)</p>
+    <a class="btn btn-ghost" href="#guide">Recevoir le guide {ARROW}</a>
+  </aside>"""
+
+
+def guide_block(g, source):
+    return f"""<section id="guide" class="guide glass" aria-labelledby="guide-t">
+    <p class="eyebrow">Guide gratuit</p>
+    <h2 id="guide-t">{gtext(g["title"])}</h2>
+    <p>{gtext(g["pitch"])}</p>
+    {guide_contents(g)}
+    <p class="meta">PDF de {guide_pages(g)} pages, à imprimer ou remplir à l’écran</p>
+    {guide_form(g, source)}
+  </section>"""
+
+
+def guide_card(g, heading="h3"):
+    return (f'<article class="card glass guide-card"><{heading}>{gtext(g["title"])}</{heading}><p>{gtext(g["pitch"])}</p>'
+            f'{guide_contents(g)}<a class="btn btn-ghost" href="/blog/{g["article"]}/#guide">Recevoir ce guide {ARROW}</a></article>')
+
+
+def guides_teaser():
+    if not PUBLISHED:
+        return ""
+    cards = "".join(guide_card(g) for g in PUBLISHED[:4])
+    return f"""<section class="band" aria-labelledby="gg"><div class="wrap">
+  <div class="head"><p class="eyebrow">Guides gratuits</p><h2 id="gg">Des guides PDF à remplir, offerts.</h2>
+  <p class="lead">{blog.nbsp("Check-lists, tableaux et modèles pour avancer sur papier ou à l’écran : chaque guide accompagne un article du blog et vous est envoyé par e-mail.")}</p></div>
+  <div class="posts">{cards}</div>
+  <p style="margin-top:20px"><a class="btn btn-ghost" href="/guides/">Tous les guides {ARROW}</a></p>
+</div></section>"""
+
+
+def guides_page():
+    cards = "".join(guide_card(g, "h2") for g in PUBLISHED)
+    body = f"""<div class="wrap">
+  <div class="head" style="padding-top:clamp(30px,6vw,60px)"><nav class="crumbs" aria-label="Fil d’Ariane"><a href="/">Nouveau Cap</a></nav>
+  <p class="eyebrow">Guides gratuits</p><h1>Guides gratuits pour préparer votre reconversion</h1>
+  <p class="lead">{blog.nbsp("Chaque guide est un PDF de quelques pages à imprimer ou à remplir à l’écran : check-lists, tableaux, modèles. Il accompagne un article du blog et vous est envoyé par e-mail, gratuitement.")}</p></div>
+  <div class="posts guides-list">{cards}</div>
+</div>"""
+    ld = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Nouveau Cap", "item": SITE + "/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides gratuits", "item": SITE + "/guides/"}]}]
+    return page("/guides/", "Guides gratuits pour préparer votre reconversion · Nouveau Cap",
+                "Guides PDF gratuits à remplir pour préparer votre reconversion après 40 ans : CV, financement, VAE, bilan de compétences, démission, trésorerie.",
+                body, jsonld=ld)
 
 
 def article_card(a):
@@ -316,6 +409,7 @@ def blog_pages():
         toc_html = "".join(f'<li><a href="#{k}">{esc(t)}</a></li>' for k, t in toc if not t.lower().startswith("sources"))
         url = f"{SITE}/blog/{a['slug']}/"
         minutes = max(1, round(a["words"] / 220))
+        g = GUIDE_FOR.get(a["slug"])
         html_body = f"""<div class="wrap narrow article">
   <nav class="crumbs" aria-label="Fil d’Ariane"><a href="/">Nouveau Cap</a> › <a href="/blog/">Blog</a></nav>
   <header class="art-head">
@@ -323,10 +417,12 @@ def blog_pages():
     <p class="lead">{esc(a["description"])}</p>
     <p class="meta">Mis à jour le <time datetime="{a["updated"]}">{blog.french_date(a["updated"])}</time> · {minutes} min de lecture · Par l’équipe Nouveau Cap (Pixapop)</p>
   </header>
+  {guide_tip(g) if g else ""}
   <details class="toc glass"><summary>Sommaire</summary><ol>{toc_html}</ol></details>
   <div class="prose">
 {body}
   </div>
+  {guide_block(g, f"/blog/{a['slug']}/") if g else ""}
   <aside class="cta glass" aria-label="Liste d’attente">
     <p class="eyebrow">Nouveau Cap</p>
     <h2>Préparez votre reconversion avec un plan.</h2>
@@ -366,7 +462,8 @@ def blog_pages():
 
 
 def text_page(path, title, description, sections, *, noindex=False):
-    blocks = "".join(f"<h2>{esc(t)}</h2>" + "".join(f"<p>{l}</p>" for l in lines) for t, lines in sections)
+    blocks = "".join((f'<h2 id="{s[2]}">' if len(s) > 2 else "<h2>") + f"{esc(s[0])}</h2>" + "".join(f"<p>{l}</p>" for l in s[1])
+                     for s in sections)
     body = f"""<div class="wrap narrow legal"><div class="paper glass">
   <p class="crumbs"><a href="/">Nouveau Cap</a></p>
   <h1>{esc(title)}</h1>
@@ -379,7 +476,7 @@ def legal_pages():
     e = esc
     privacy = [
         ("En bref", [
-            "Ce site ne dépose aucun cookie et n’enregistre rien sur votre appareil. Il compte les visites de façon anonyme, et il ne recueille votre adresse e-mail que si vous vous inscrivez sur la liste d’attente.",
+            "Ce site ne dépose aucun cookie et n’enregistre rien sur votre appareil. Il compte les visites de façon anonyme, et il ne recueille votre adresse e-mail que si vous vous inscrivez sur la liste d’attente ou si vous demandez un guide gratuit.",
             f"Les données de l’application elle-même sont décrites dans sa <a href=\"{APP_PRIVACY}\">politique de confidentialité</a>."]),
         ("Responsable", [e(f"Pixapop, nom commercial de {PUB['name']}, entrepreneur individuel, {PUB['address']}. Contact : {EMAIL}.")]),
         ("Compteur de visites", [
@@ -391,14 +488,21 @@ def legal_pages():
             "Données : votre adresse e-mail, le type de téléphone si vous l’indiquez, la page d’inscription, la date et le texte accepté. Pour limiter les abus, une empreinte non réversible de votre connexion est conservée 24 heures.",
             "Hébergement : Supabase, serveurs situés à Paris. Aucune revente, aucune publicité, aucun partage.",
             "Durée : l’adresse est effacée 30 jours après l’e-mail de lancement, et au plus tard 12 mois après l’inscription."]),
+        ("Guides gratuits", [blog.nbsp(x) for x in [
+            "Finalité : vous envoyer par e-mail le guide que vous demandez. Et, seulement si vous cochez la case prévue, vous envoyer les nouvelles de Nouveau Cap (lancement de l’application, prochains guides et conseils), un e-mail par mois au plus.",
+            "Base : votre demande pour l’envoi du guide ; votre consentement, donné en cochant la case, pour les nouvelles. La case n’est jamais cochée d’avance, et le guide vous est envoyé même si vous ne la cochez pas.",
+            "Données : votre adresse e-mail, le guide demandé, la page d’où vous le demandez, la date et, si vous cochez la case, le texte accepté. Pour limiter les abus, une empreinte non réversible de votre connexion est conservée 24 heures.",
+            "Hébergement : Supabase, serveurs situés à Paris. Les e-mails partent d’une boîte e-mail hébergée par o2switch, en France. Aucune revente, aucune publicité, aucun partage.",
+            "Durée : sans la case cochée, l’adresse est effacée 30 jours après votre demande. Avec la case cochée, elle est conservée 24 mois après votre dernière demande, ou jusqu’à votre désinscription.",
+            "Désinscription : si vous avez coché la case, chaque e-mail contient un lien pour vous désinscrire en un clic. Vous ne recevez alors plus rien, et votre adresse est effacée dans les 30 jours."]], "guides"),
         ("Hébergement du site", ["Le site est hébergé par GitHub Pages (GitHub, Inc., États-Unis), qui peut conserver temporairement l’adresse IP des visiteurs pour la sécurité du service."]),
         ("Vos droits", [e(f"Chaque e-mail contient un lien de désinscription immédiate. Vous pouvez aussi écrire à {EMAIL} pour accéder à vos données, les corriger ou les effacer, et saisir la CNIL (cnil.fr).")]),
     ]
-    text_page("/confidentialite/", "Confidentialité du site", "Confidentialité du site de Nouveau Cap : compteur de visites sans cookie, liste d’attente, hébergement, vos droits.", privacy)
+    text_page("/confidentialite/", "Confidentialité du site", "Confidentialité du site de Nouveau Cap : compteur de visites sans cookie, liste d’attente, guides gratuits envoyés par e-mail, hébergement, vos droits.", privacy)
     notice = [
         ("Éditeur", [e(f"Pixapop, nom commercial de {PUB['name']}, {PUB['legalForm']}."), e(f"Adresse : {PUB['address']}."),
                      e(f"SIRET : {PUB['siret']}."), e(f"Directeur de la publication : {PUB['director']}."), e(f"Contact : {EMAIL}.")]),
-        ("Hébergement", ["GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (service GitHub Pages). Compteur de visites et liste d’attente : Supabase, serveurs situés à Paris."]),
+        ("Hébergement", ["GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (service GitHub Pages). Compteur de visites, liste d’attente et guides gratuits : Supabase, serveurs situés à Paris. Envoi des guides par e-mail : boîte e-mail hébergée par o2switch, en France."]),
         ("Application", [f"Les mentions légales, conditions et politique de confidentialité de l’application Nouveau Cap sont sur <a href=\"{APP_NOTICE}\">pixapop.fr</a>."]),
         ("Propriété intellectuelle", ["Les textes, images et logos de ce site appartiennent à Pixapop, sauf mention contraire. Toute reproduction sans autorisation est interdite.",
                                      "Polices Sora et Manrope, sous licence SIL Open Font License 1.1."]),
@@ -434,11 +538,9 @@ def publish_guides():
     out.mkdir()
     catalogue = []
     by_slug = {a["slug"]: a for a in ARTICLES}
-    for g in GUIDES:
+    for g in (g for g in GUIDES if g in PUBLISHED):  # catalogue in file order
         pdf = ROOT / "guides" / "pdf" / f"{g['slug']}.pdf"
-        art = by_slug.get(g["article"])
-        if not pdf.exists() or not art:
-            continue
+        art = by_slug[g["article"]]
         shutil.copy(pdf, out / pdf.name)
         catalogue.append({"slug": g["slug"], "title": g["title"], "pdf": f"/telechargement/{pdf.name}",
                           "article": f"/blog/{art['slug']}/", "article_title": art["title"],
@@ -454,7 +556,7 @@ def main():
     publish_guides()
     (OUT / "CNAME").write_text("nouveaucap.pixapop.fr\n", encoding="utf-8")
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
-    paths = [home(), *legal_pages(), *blog_pages()]
+    paths = [home(), guides_page(), *legal_pages(), *blog_pages()]
     unsubscribe()
     not_found()
     today = date.today().isoformat()
