@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "publisher": {
     "name": "Cyril Gayet",
     "tradeName": "Pixapop",
@@ -87,7 +87,8 @@
         "Vos suggestions et vos votes dans « Vos idées », et l’e-mail que vous choisissez d’y laisser pour être recontacté.",
         "Si vous acceptez les notifications : l’adresse de notification de votre téléphone et la date de votre dernière ouverture de l’app.",
         "Les CV et profils LinkedIn importés en PDF sont lus par le serveur pour en extraire le texte, puis effacés aussitôt.",
-        "Les réponses de l’IA que vous signalez (bouton « Signaler »), avec le motif et la précision que vous ajoutez, pour les examiner et améliorer le service."
+        "Les réponses de l’IA que vous signalez (bouton « Signaler »), avec le motif et la précision que vous ajoutez, pour les examiner et améliorer le service.",
+        "Pour lire et suivre vos suggestions et vos signalements, nous en copions le contenu (le type, la rubrique, le message, l’offre, la version de l’app, le nombre de votes, la réponse signalée et votre précision) dans notre outil de suivi, Notion (Notion Labs, États-Unis). Votre e-mail et l’identifiant de votre compte n’y sont pas copiés. Ce transfert hors de l’Union européenne est encadré par les clauses contractuelles types de la Commission européenne."
       ]
     },
     {
@@ -144,14 +145,14 @@
         "La mémoire du Copilote : jusqu’à ce que vous l’effaciez, retiriez votre accord ou effaciez vos données.",
         "Les compteurs d’utilisation : 12 mois, puis supprimés automatiquement. Après un effacement de vos données, ils ne sont plus liés à votre compte.",
         "L’adresse de notification : jusqu’à ce que vous coupiez les notifications ou effaciez vos données, et au plus 12 mois sans ouverture de l’app.",
-        "Les suggestions et les votes : jusqu’à leur effacement par vous, ou 3 ans sans activité.",
-        "Les signalements de réponses de l’IA : 12 mois. Après un effacement de vos données, ils ne sont plus liés à votre compte."
+        "Les suggestions et les votes : jusqu’à leur effacement par vous, ou 3 ans sans activité. Leur copie dans notre outil de suivi est effacée en même temps.",
+        "Les signalements de réponses de l’IA : 12 mois, copie dans notre outil de suivi comprise. Après un effacement de vos données, ils ne sont plus liés à votre compte."
       ]
     },
     {
       "title": "Qui y a accès",
       "lines": [
-        "Seuls Cyril Gayet et ses prestataires techniques y ont accès, chacun pour ce qui le concerne : Supabase (serveur), Anthropic (IA), Expo (notifications), RevenueCat (suivi des achats), Cloudflare (protection contre les robots), et Google ou Apple (distribution de l’app et paiements)."
+        "Seuls Cyril Gayet et ses prestataires techniques y ont accès, chacun pour ce qui le concerne : Supabase (serveur), Anthropic (IA), Expo (notifications), RevenueCat (suivi des achats), Cloudflare (protection contre les robots), Notion (suivi des suggestions et des signalements), et Google ou Apple (distribution de l’app et paiements)."
       ]
     },
     {
@@ -166,7 +167,7 @@
     {
       "title": "Mises à jour",
       "lines": [
-        "Cette politique a été mise à jour le 29 septembre 2026. En cas de changement important, l’app vous en informera."
+        "Cette politique a été mise à jour le 30 septembre 2026. En cas de changement important, l’app vous en informera."
       ]
     }
   ],
@@ -263,7 +264,7 @@
       "lines": [
         "Ces conditions sont soumises au droit français. En cas de litige, les tribunaux compétents sont ceux prévus par la loi, notamment ceux de votre domicile si vous êtes consommateur.",
         "Nous pouvons modifier ces conditions. La version applicable est celle en vigueur à la date de votre achat ou de votre renouvellement ; un changement important vous est signalé dans l’application.",
-        "Conditions mises à jour le 29 septembre 2026."
+        "Conditions mises à jour le 30 septembre 2026."
       ]
     }
   ]
